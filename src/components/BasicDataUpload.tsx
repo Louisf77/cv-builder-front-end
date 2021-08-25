@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Textarea } from "@chakra-ui/react";
+import { Button, Input } from "@chakra-ui/react";
 
 export default function BasicDataUpload(): JSX.Element {
   const apiBaseURL = process.env.REACT_APP_API_BASE;
@@ -27,31 +27,31 @@ export default function BasicDataUpload(): JSX.Element {
   };
   return (
     <>
-      <Textarea
+      <Input
         type="form"
         placeholder="Input first name....."
         value={firstName}
         onChange={(e) => setFirstName(e.target.value)}
       />
-      <Textarea
+      <Input
         type="form"
         placeholder="Input surname....."
         value={surname}
         onChange={(e) => setSurname(e.target.value)}
       />
-      <Textarea
+      <Input
         type="form"
         placeholder="Input date of birth in format MM-DD-YYYY....."
         value={dob}
         onChange={(e) => setDob(e.target.value)}
       />
-      <Textarea
+      <Input
         type="form"
         placeholder="Input email....."
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
-      <Textarea
+      <Input
         type="form"
         placeholder="Input mobile....."
         value={mobile}

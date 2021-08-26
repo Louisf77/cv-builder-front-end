@@ -1,6 +1,6 @@
 import { Button, Input } from "@chakra-ui/react";
 import { useState } from "react";
-import { IEducation } from "../utils/types";
+import { IEducation } from "../../utils/types";
 
 export default function EducationUpload({ userID }: IEducation): JSX.Element {
   const apiBaseURL = process.env.REACT_APP_API_BASE;

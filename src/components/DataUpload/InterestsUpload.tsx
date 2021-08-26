@@ -1,6 +1,6 @@
 import { Button, Input } from "@chakra-ui/react";
 import { useState } from "react";
-import { IInterest } from "../utils/types";
+import { IInterest } from "../../utils/types";
 
 export default function InterestsUpload({ userID }: IInterest): JSX.Element {
   const apiBaseURL = process.env.REACT_APP_API_BASE;

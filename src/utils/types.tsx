@@ -13,3 +13,6 @@ export interface IInterest {
 export interface ISkill {
   userID: number;
 }
+export interface IBio {
+    userID: number;
+  }

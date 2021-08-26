@@ -1,6 +1,6 @@
 import { Button, Input } from "@chakra-ui/react";
 import { useState } from "react";
-import { ISkill } from "../utils/types";
+import { ISkill } from "../../utils/types";
 
 export default function SkillsUpload({ userID }: ISkill): JSX.Element {
   const apiBaseURL = process.env.REACT_APP_API_BASE;

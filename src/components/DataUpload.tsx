@@ -1,4 +1,5 @@
 import { useState } from "react";
+import CVLayout from "./CVStructure";
 import BioUpload from "./DataUpload/BioUpload";
 import EducationUpload from "./DataUpload/EducationUpload";
 import InterestsUpload from "./DataUpload/InterestsUpload";
@@ -9,6 +10,7 @@ export default function DataUpload():JSX.Element{
     const [userID, setUserID] = useState<number>(1); //change to pick from a drop down
     return (
         <>
+        <CVLayout userID={userID} />
         <BioUpload userID={userID} />
         <EducationUpload userID={userID} />
         <WorkUpload userID={userID} />

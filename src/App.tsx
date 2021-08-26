@@ -9,7 +9,7 @@ function App(): JSX.Element {
     <>
       <ChakraProvider>
         <GreetingPage />
-        <DataUpload />
+        {/* <DataUpload /> */}
       </ChakraProvider>
     </>
   );

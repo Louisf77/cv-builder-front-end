@@ -16,3 +16,7 @@ export interface ISkill {
 export interface IBio {
     userID: number;
   }
+
+export interface ICVLayout {
+    userID: number
+}

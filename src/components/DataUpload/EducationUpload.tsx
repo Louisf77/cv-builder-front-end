@@ -10,6 +10,7 @@ export default function EducationUpload({ userID }: IEducation): JSX.Element {
   const [endDate, setEndDate] = useState("");
   const [qualificationLevel, setQualificationLevel] = useState("");
   const [grade, setGrade] = useState("");
+  const [subject, setSubject] = useState("");
   const onSubmit = async () => {
     try {
       await fetch(apiBaseURL + `/create/education/${userID}`, {
@@ -53,6 +54,12 @@ export default function EducationUpload({ userID }: IEducation): JSX.Element {
         placeholder="Input qualification level"
         value={qualificationLevel}
         onChange={(e) => setQualificationLevel(e.target.value)}
+      />
+      <Input
+        type="form"
+        placeholder="Input subject"
+        value={subject}
+        onChange={(e) => setSubject(e.target.value)}
       />
       <Input
         type="form"

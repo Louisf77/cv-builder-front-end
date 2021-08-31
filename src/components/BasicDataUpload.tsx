@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { Box, Button, Input, Stack } from "@chakra-ui/react";
+import { HashRouter as Router, Link } from "react-router-dom";
 
 export default function BasicDataUpload(): JSX.Element {
   const apiBaseURL = process.env.REACT_APP_API_BASE;
+  const [userID, setUserID] = useState<number>(1);
   const [firstName, setFirstName] = useState("");
   const [surname, setSurname] = useState("");
   const [dob, setDob] = useState("");
@@ -78,9 +80,13 @@ export default function BasicDataUpload(): JSX.Element {
             onChange={(e) => setAddress(e.target.value)}
             width="600px"
           />
-          <Button onClick={onSubmit} variant="outline">
-            Save
-          </Button>
+          <Router>
+            <Link to={`/viewCV/${userID}`}>
+              <Button onClick={onSubmit} variant="outline">
+                Save & Continue
+              </Button>
+            </Link>
+          </Router>
         </Stack>
       </Box>
     </>

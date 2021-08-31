@@ -1,8 +1,10 @@
 import { Button, Input, Textarea } from "@chakra-ui/react";
 import { useState } from "react";
-import { IWork } from "../../utils/types";
+import { useContext } from "react";
+import { userContext } from "../../App";
 
-export default function WorkUpload({ userID }: IWork): JSX.Element {
+export default function WorkUpload(): JSX.Element {
+  const userID = useContext(userContext)
   const apiBaseURL = process.env.REACT_APP_API_BASE;
   const [companyName, setCompanyName] = useState("");
   const [role, setRole] = useState("");

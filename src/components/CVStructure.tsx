@@ -5,24 +5,19 @@ import {
   GridItem,
   List,
   ListItem,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalCloseButton,
-  ModalBody,
-  ModalFooter,
-  Button,
-  useDisclosure,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import { ICVLayout, IUserID } from "../utils/types";
-import EducationUpload from "./DataUpload/EducationUpload";
+import { ICVLayout } from "../utils/types";
 import Education from "./Education";
+import Work from "./Work";
+import { useContext } from "react";
+import { userContext } from "../App";
 
-export default function CVLayout({ userID }: IUserID): JSX.Element {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+
+
+export default function CVLayout(): JSX.Element {
   const apiBaseURL = process.env.REACT_APP_API_BASE;
+  const userID = useContext(userContext)
   const [userData, setUserData] = useState<ICVLayout>({
     user_id: 1,
     first_name: "",
@@ -31,7 +26,7 @@ export default function CVLayout({ userID }: IUserID): JSX.Element {
     email: "",
     mobile: "",
     address: "",
-    eduction: [
+    education: [
       {
         ed_id: 0,
         institution_name: "",
@@ -112,51 +107,8 @@ export default function CVLayout({ userID }: IUserID): JSX.Element {
           </Box>
         </GridItem>
         <GridItem colSpan={7}>
-          {/* <Box className="Education">
-                   <Heading>Education</Heading>
-                    {userData.eduction.map((obj,index)=> (
-                         <Box key={index}>
-                             <List>
-                             <ListItem>{obj.institution_name}  {obj.start_date}-{obj.end_date}</ListItem>
-                             <ListItem>{obj.qualification_level}</ListItem>
-                             <ListItem>{obj.subject}</ListItem>
-                             <ListItem>{obj.grade}</ListItem>
-                             </List>
-                        </Box>
-                    ))}
-                <Button onClick={onOpen}>Open Modal</Button>
-                <Modal isOpen={isOpen} onClose={onClose}>
-                <ModalOverlay />
-                <ModalContent>
-                    <ModalHeader>Modal Title</ModalHeader>
-                    <ModalCloseButton />
-                    <ModalBody>
-                    <EducationUpload userID={userID} />
-                    </ModalBody>
-                    <ModalFooter>
-                    <Button colorScheme="blue" mr={3} onClick={onClose}>
-                        Close
-                    </Button>
-                    </ModalFooter>
-                </ModalContent>
-                </Modal>
-               </Box> */}
-          <Education userData={userData} userID={userID} />
-          <Box className="work">
-            <Heading>Experience</Heading>
-            {userData.work.map((obj, index) => (
-              <Box key={index}>
-                <List>
-                  <ListItem>{obj.company_name}</ListItem>
-                  <ListItem>
-                    {obj.start_date}-{obj.end_date}
-                  </ListItem>
-                  <ListItem>{obj.role}</ListItem>
-                  <ListItem>{obj.responsibilities}</ListItem>
-                </List>
-              </Box>
-            ))}
-          </Box>
+          <Education userData={userData}  />
+          <Work userData={userData}  />
           <Box className="interests">
             <Heading>Interests</Heading>
             {userData.interest.map((obj, index) => (

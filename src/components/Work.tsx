@@ -13,36 +13,35 @@ import {
   Button,
   useDisclosure,
 } from "@chakra-ui/react";
-import EducationUpload from "./DataUpload/EducationUpload";
-import { IEd } from "../utils/types";
+import WorkUpload from "./DataUpload/WorkUpload";
+import { IWrk } from "../utils/types";
 
-
-export default function Education({ userData}: IEd): JSX.Element {
+export default function Work({userData}: IWrk): JSX.Element {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
-      <Box className="Education">
-        <Heading>Education</Heading>
-        {userData.education.map((obj, index) => (
+      <Box className="work">
+        <Heading>Experience</Heading>
+        {userData.work.map((obj, index) => (
           <Box key={index}>
             <List>
+              <ListItem>{obj.company_name}</ListItem>
               <ListItem>
-                {obj.institution_name} {obj.start_date}-{obj.end_date}
+                {obj.start_date}-{obj.end_date}
               </ListItem>
-              <ListItem>{obj.qualification_level}</ListItem>
-              <ListItem>{obj.subject}</ListItem>
-              <ListItem>{obj.grade}</ListItem>
+              <ListItem>{obj.role}</ListItem>
+              <ListItem>{obj.responsibilities}</ListItem>
             </List>
           </Box>
         ))}
-        <Button onClick={onOpen}>Add Education</Button>
+        <Button onClick={onOpen}>Add Experience</Button>
         <Modal isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
           <ModalContent>
-            <ModalHeader>Add Your Education</ModalHeader>
+            <ModalHeader>Add Your Work Experience</ModalHeader>
             <ModalCloseButton />
             <ModalBody>
-              <EducationUpload />
+              <WorkUpload/>
             </ModalBody>
             <ModalFooter>
               <Button colorScheme="blue" mr={3} onClick={onClose}>

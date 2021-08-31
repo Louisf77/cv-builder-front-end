@@ -1,21 +1,3 @@
-export interface IEducation {
-  userID: number;
-}
-
-export interface IWork {
-  userID: number;
-}
-
-export interface IInterest {
-  userID: number;
-}
-
-export interface ISkill {
-  userID: number;
-}
-export interface IUserID {
-  userID: number;
-}
 
 export interface ICVLayout {
   user_id: number;
@@ -25,7 +7,7 @@ export interface ICVLayout {
   email: string;
   mobile: string;
   address: string;
-  eduction: [
+  education: [
     {
       ed_id: number;
       institution_name: string;
@@ -68,5 +50,8 @@ export interface ICVLayout {
 
 export interface IEd {
   userData: ICVLayout;
-  userID: number;
+}
+
+export interface IWrk {
+  userData: ICVLayout;
 }

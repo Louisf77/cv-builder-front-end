@@ -1,10 +1,10 @@
 import { Button, Input } from "@chakra-ui/react";
-import { useState } from "react";
-import { IEducation } from "../../utils/types";
+import { useState ,useContext} from "react";
+import { userContext } from "../../App";
 
-export default function EducationUpload({ userID }: IEducation): JSX.Element {
+export default function EducationUpload(): JSX.Element {
   const apiBaseURL = process.env.REACT_APP_API_BASE;
-
+  const userID = useContext(userContext)
   const [institutionName, setInstitutionName] = useState("");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");

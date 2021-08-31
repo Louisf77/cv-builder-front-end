@@ -1,9 +1,10 @@
 import { Button, Input } from "@chakra-ui/react";
-import { useState } from "react";
-import { IUserID } from "../../utils/types";
+import { useState ,useContext} from "react";
+import { userContext } from "../../App";;
 
-export default function BioUpload({ userID }: IUserID): JSX.Element {
+export default function BioUpload(): JSX.Element {
   const apiBaseURL = process.env.REACT_APP_API_BASE;
+  const userID = useContext(userContext)
   const [bio, setBio] = useState("");
 
   const onSubmit = async () => {

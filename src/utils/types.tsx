@@ -1,4 +1,3 @@
-
 export interface ICVLayout {
   user_id: number;
   first_name: string;
@@ -48,10 +47,11 @@ export interface ICVLayout {
   ];
 }
 
-export interface IEd {
+export interface IUserData {
   userData: ICVLayout;
 }
 
-export interface IWrk {
-  userData: ICVLayout;
+export interface IPass {
+  password: string;
+  setPassword(pasword: string): void;
 }

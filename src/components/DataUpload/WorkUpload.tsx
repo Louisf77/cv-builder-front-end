@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { userContext } from "../../App";
 
 export default function WorkUpload(): JSX.Element {
-  const userID = useContext(userContext)
+  const userID = useContext(userContext);
   const apiBaseURL = process.env.REACT_APP_API_BASE;
   const [companyName, setCompanyName] = useState("");
   const [role, setRole] = useState("");

@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Box, Button, Input, Stack } from "@chakra-ui/react";
 import { HashRouter as Router, Link } from "react-router-dom";
+import { userContext } from "../../App";
 
 export default function BasicDataUpload(): JSX.Element {
+  const userID = useContext(userContext);
   const apiBaseURL = process.env.REACT_APP_API_BASE;
-  const [userID, setUserID] = useState<number>(1);
   const [firstName, setFirstName] = useState("");
   const [surname, setSurname] = useState("");
   const [dob, setDob] = useState("");

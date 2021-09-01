@@ -1,4 +1,4 @@
-import { Heading, Box, Grid, GridItem, List, ListItem,Text, Stack, VStack, StackDivider } from "@chakra-ui/react";
+import { Box, Grid, GridItem, Stack,StackDivider } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { ICVLayout } from "../utils/types";
 import Education from "./CVFields/Education";
@@ -7,6 +7,8 @@ import { useContext } from "react";
 import { userContext } from "../App";
 import Interests from "./CVFields/Interests";
 import Skills from "./CVFields/Skills";
+import CVHeader from "./CVFields/Header";
+import Bio from "./CVFields/Bio";
 
 export default function CVLayout(): JSX.Element {
   const apiBaseURL = process.env.REACT_APP_API_BASE;
@@ -73,47 +75,34 @@ export default function CVLayout(): JSX.Element {
   }, [apiBaseURL, userID]);
   return (
     <Box backgroundColor="gray.50" minH="100vh">
-    <Box maxWidth="595px" height="842px" alignItems="center" backgroundColor="white" margin="auto" padding="10px" boxShadow="lg" fontSize="10px" overflowY="scroll">
-    <Text
-      bgGradient={[
-        "linear(to-tr, teal.300,yellow.400)",
-        "linear(to-t, blue.200, teal.500)",
-        "linear(to-b, orange.100, purple.300)",
-      ]}
-      bgClip="text"
-      fontSize="6xl"
-      fontWeight="extrabold"
-      align="center" marginTop="10px"
-    >
-      {userData.first_name.toUpperCase()} {userData.surname.toUpperCase()}
-    </Text>
-      <Grid templateColumns="repeat(10,1fr)">
-        <GridItem colSpan={3} marginRight="10px">
-          <Box className="Details">
-            <Heading fontSize="20px" align="center" backgroundColor="gray.500" color="white">DETAILS</Heading>
-            <List>
-              <ListItem>{userData.email}</ListItem>
-              <ListItem>{userData.mobile}</ListItem>
-              <ListItem>{userData.address}</ListItem>
-            </List>
-          </Box>
-          <Box className="Bio">
-            <Heading align="center" fontSize="20px" backgroundColor="pink">ABOUT ME</Heading>
-            {userData.bio.map((obj, index) => (
-              <Box key={index}>{obj.bio}</Box>
-            ))}
-          </Box>
+    <Box maxWidth="595px" height="842px" alignItems="center" backgroundColor="white" margin="auto"  boxShadow="lg" fontSize="10px" overflowY="scroll" sx={{
+          "&::-webkit-scrollbar": {
+            width: "10px",
+            borderRadius: "8px",
+            backgroundColor: "gray.50",
+          },
+          "&::-webkit-scrollbar-thumb": {
+            backgroundColor: "gray.200",
+            borderRadius: "10px",
+          },
+        }}>
+      <CVHeader userData={userData} />
+      <Grid templateColumns="repeat(10,1fr)" marginTop="15px" paddingLeft="10px" paddingRight="10px">
+        <GridItem colSpan={3} >
+          <Stack divider={<StackDivider borderColor="gray.200" />}
+        spacing="10px">
+          <Bio userData={userData} />
           <Skills userData={userData} />
           <Interests userData={userData} />
+          </Stack>
         </GridItem>
-        <GridItem colSpan={7}>
+        <GridItem colSpan={7} marginLeft="20px">
         <Stack
         divider={<StackDivider borderColor="gray.200" />}
         spacing="10px"
         >
           <Education userData={userData} />
           <Work userData={userData} />
-          
           </Stack>
         </GridItem>
       </Grid>

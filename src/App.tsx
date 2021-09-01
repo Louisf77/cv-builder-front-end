@@ -5,19 +5,23 @@ import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import { useState, createContext } from "react";
 import { theme } from "./utils/themes";
 import "@fontsource/montserrat"
+import { useAuth0 } from "@auth0/auth0-react";
+import Header from "./components/Header";
 
-import { MainLogInScreen } from "./components/LoginScreen/MainScreen";
+
 
 export const userContext = createContext<number>(1);
 
 function App(): JSX.Element {
+  const { user, isAuthenticated, isLoading } = useAuth0();
   const [userID, setUserID] = useState<number>(1);
+  
   return (
     <>
       <Router>
         <ChakraProvider theme={theme}>
           <userContext.Provider value={userID}>
-            {/* <MainLogInScreen /> */}
+         <Header/>
             <Switch>
               <Route path={`/viewCV/${userID}`}>
                 <CV />

@@ -10,7 +10,6 @@ import {
   ModalCloseButton,
   ModalBody,
   ModalFooter,
-  Button,
   useDisclosure,
   IconButton,
   Stack,
@@ -26,14 +25,14 @@ export default function Education({ userData }: IUserData): JSX.Element {
   return (
     <>
       <Box className="Education">
-        <Heading align="center" fontSize="20px">EDUCATION</Heading>
+        <Heading align="center" fontSize="20px" fontWeight="medium">EDUCATION</Heading>
         {userData.education.map((obj, index) => (
           <Stack key={index}
           spacing="10px">
             <List>
               <ListItem fontSize="11px" fontWeight="bold">{obj.subject}</ListItem>
               <ListItem>
-                {obj.institution_name} {timeConverter(obj.start_date)} - {timeConverter(obj.end_date)}
+                {obj.institution_name} | {timeConverter(obj.start_date)} - {timeConverter(obj.end_date)}
               </ListItem>
               <ListItem>Qualification Level: {obj.qualification_level}</ListItem>
               <ListItem>Grade(s) Acheived: {obj.grade}</ListItem>
@@ -48,20 +47,17 @@ export default function Education({ userData }: IUserData): JSX.Element {
           isRound={true}
           marginLeft="45%"
           size="sm"
+          variant="outline"
         />
         <Modal isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
           <ModalContent>
-            <ModalHeader>Add Your Education</ModalHeader>
+            <ModalHeader textAlign="center" fontWeight="medium">ADD EDUCATION</ModalHeader>
             <ModalCloseButton />
             <ModalBody>
               <EducationUpload />
             </ModalBody>
-            <ModalFooter>
-              <Button colorScheme="blue" mr={3} onClick={onClose}>
-                Close
-              </Button>
-            </ModalFooter>
+            <ModalFooter />
           </ModalContent>
         </Modal>
       </Box>

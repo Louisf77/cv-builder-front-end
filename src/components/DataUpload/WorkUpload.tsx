@@ -1,4 +1,4 @@
-import { Button, Input, Textarea } from "@chakra-ui/react";
+import { Button, Input, Stack, Textarea } from "@chakra-ui/react";
 import { useState } from "react";
 import { useContext } from "react";
 import { userContext } from "../../App";
@@ -29,7 +29,7 @@ export default function WorkUpload(): JSX.Element {
     }
   };
   return (
-    <>
+    <Stack>
       <Input
         type="form"
         placeholder="Input Company Name"
@@ -63,6 +63,6 @@ export default function WorkUpload(): JSX.Element {
       <Button onClick={onSubmit} variant="outline">
         Save
       </Button>
-    </>
+    </Stack>
   );
 }

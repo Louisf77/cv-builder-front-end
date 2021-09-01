@@ -11,7 +11,6 @@ import {
   ModalCloseButton,
   ModalBody,
   ModalFooter,
-  Button,
   useDisclosure,
   IconButton,
   StackDivider
@@ -26,7 +25,7 @@ export default function Work({ userData }: IUserData): JSX.Element {
   return (
     <>
       <Box className="work">
-        <Heading align="center" fontSize="20px">EXPERIENCE</Heading>
+        <Heading align="center" fontWeight="medium" fontSize="20px">EXPERIENCE</Heading>
         {userData.work.map((obj, index) => (
           <Stack key={index}
           spacing="10px"
@@ -46,20 +45,17 @@ export default function Work({ userData }: IUserData): JSX.Element {
           isRound={true}
           size="sm"
           marginLeft="45%"
+          variant="outline"
         />
         <Modal isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
           <ModalContent>
-            <ModalHeader>Add Your Work Experience</ModalHeader>
+            <ModalHeader fontWeight="medium" textAlign="center">ADD WORK EXPERIENCE</ModalHeader>
             <ModalCloseButton />
             <ModalBody>
               <WorkUpload />
             </ModalBody>
-            <ModalFooter>
-              <Button colorScheme="blue" mr={3} onClick={onClose}>
-                Close
-              </Button>
-            </ModalFooter>
+            <ModalFooter />
           </ModalContent>
         </Modal>
       </Box>

@@ -1,4 +1,4 @@
-import { Button, Input } from "@chakra-ui/react";
+import { Button, Input, Stack } from "@chakra-ui/react";
 import { useState, useContext } from "react";
 import { userContext } from "../../App";
 
@@ -20,14 +20,14 @@ export default function InterestsUpload(): JSX.Element {
     }
   };
   return (
-    <>
+    <Stack>
       <Input
         type="form"
         value={interest}
         placeholder="Add Interest"
         onChange={(e) => setInterest(e.target.value)}
       />
-      <Button onClick={onSubmit}>Save</Button>
-    </>
+      <Button onClick={onSubmit} variant="outline">Save</Button>
+    </Stack>
   );
 }

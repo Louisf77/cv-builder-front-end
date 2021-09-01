@@ -1,4 +1,4 @@
-import { Button, Input } from "@chakra-ui/react";
+import { Button, Input, Stack } from "@chakra-ui/react";
 import { useState, useContext } from "react";
 import { userContext } from "../../App";
 
@@ -21,7 +21,7 @@ export default function BioUpload(): JSX.Element {
     }
   };
   return (
-    <>
+    <Stack>
       <Input
         type="form"
         placeholder="Add a bit about yourself"
@@ -29,6 +29,6 @@ export default function BioUpload(): JSX.Element {
         onChange={(e) => setBio(e.target.value)}
       />
       <Button onClick={onSubmit}>Add</Button>
-    </>
+    </Stack>
   );
 }

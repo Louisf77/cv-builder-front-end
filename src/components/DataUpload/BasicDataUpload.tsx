@@ -1,9 +1,13 @@
 import { useContext, useState } from "react";
-import { Box, Button, Input, Stack } from "@chakra-ui/react";
+import { Box, Button, Center, Heading, Input, Stack } from "@chakra-ui/react";
 import { HashRouter as Router, Link } from "react-router-dom";
 import { userContext } from "../../App";
+import { useAuth0 } from "@auth0/auth0-react";
+
+
 
 export default function BasicDataUpload(): JSX.Element {
+  const { user, isAuthenticated, isLoading } = useAuth0();
   const userID = useContext(userContext);
   const apiBaseURL = process.env.REACT_APP_API_BASE;
   const [firstName, setFirstName] = useState("");
@@ -12,6 +16,7 @@ export default function BasicDataUpload(): JSX.Element {
   const [email, setEmail] = useState("");
   const [mobile, setMobile] = useState("");
   const [address, setAddress] = useState("");
+  
   const onSubmit = async () => {
     try {
       await fetch(apiBaseURL + "/create/personal-details", {
@@ -22,6 +27,7 @@ export default function BasicDataUpload(): JSX.Element {
           dob: dob,
           email: email,
           mobile: mobile,
+          sub: user?.sub
         }),
         headers: { "Content-Type": "application/json" },
       });
@@ -30,14 +36,17 @@ export default function BasicDataUpload(): JSX.Element {
     }
   };
   return (
-    <>
+    <Center h="100vh" w="100vw">
       <Box
-        width="45%"
+        width="700px"
         borderRadius="5"
         margin="auto"
         height="600px"
-        dropShadow="md"
+        boxShadow="md"
+        backgroundColor="white"
+        paddingTop="50px"
       >
+        <Heading align="center" fontSize="20px" fontWeight="medium" marginBottom="50px">INPUT YOUR PERSONAL DETAILS TO GET STARTED</Heading>
         <Stack align="center">
           <Input
             type="form"
@@ -83,13 +92,13 @@ export default function BasicDataUpload(): JSX.Element {
           />
           <Router>
             <Link to={`/viewCV/${userID}`}>
-              <Button onClick={onSubmit} variant="outline">
+              <Button onClick={onSubmit} variant="outline" marginTop="20px">
                 Save & Continue
               </Button>
             </Link>
           </Router>
         </Stack>
       </Box>
-    </>
+    </Center>
   );
 }

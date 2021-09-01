@@ -1,4 +1,4 @@
-import { Button, Input } from "@chakra-ui/react";
+import { Button, Input, Stack } from "@chakra-ui/react";
 import { useState, useContext } from "react";
 import { userContext } from "../../App";
 
@@ -31,7 +31,7 @@ export default function EducationUpload(): JSX.Element {
   };
 
   return (
-    <>
+    <Stack spacing="5px">
       <Input
         type="form"
         placeholder="Input Education Institution"
@@ -71,6 +71,6 @@ export default function EducationUpload(): JSX.Element {
       <Button onClick={onSubmit} variant="outline">
         Save
       </Button>
-    </>
+    </Stack>
   );
 }

@@ -10,7 +10,8 @@ import {
   ModalFooter,
   IconButton,
   useDisclosure,
-  Button,
+  Stack,
+  StackItem,
 } from "@chakra-ui/react";
 import InterestsUpload from "../DataUpload/InterestsUpload";
 import { IUserData } from "../../utils/types";
@@ -21,30 +22,28 @@ export default function Interests({ userData }: IUserData): JSX.Element {
   return (
     <>
       <Box className="interests">
-        <Heading align="center" fontSize="20px">INTERESTS</Heading>
+        <Heading align="center" fontWeight="medium"fontSize="18px" marginBottom="5px">INTERESTS</Heading>
         {userData.interest.map((obj, index) => (
-          <Box key={index}>{obj.interest}</Box>
+          <Stack key={index} spacing="5px"><StackItem>{obj.interest}</StackItem></Stack>
         ))}
         <IconButton
           aria-label="Add"
           onClick={onOpen}
           icon={<IoMdAdd />}
           isRound={true}
-          alignSelf="center"
+          marginLeft="40%"
+          size="sm"
+          variant="outline"
         />
         <Modal isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
           <ModalContent>
-            <ModalHeader>Add Another Interest</ModalHeader>
+            <ModalHeader textAlign="center" fontWeight="medium">ADD INTEREST</ModalHeader>
             <ModalCloseButton />
             <ModalBody>
               <InterestsUpload />
             </ModalBody>
-            <ModalFooter>
-              <Button colorScheme="blue" mr={3} onClick={onClose}>
-                Close
-              </Button>
-            </ModalFooter>
+            <ModalFooter />
           </ModalContent>
         </Modal>
       </Box>

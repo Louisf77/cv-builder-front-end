@@ -10,7 +10,8 @@ import {
   ModalFooter,
   IconButton,
   useDisclosure,
-  Button,
+  StackItem,
+  Stack,
 } from "@chakra-ui/react";
 import SkillsUpload from "../DataUpload/SkillsUpload";
 import { IUserData } from "../../utils/types";
@@ -21,29 +22,29 @@ export default function Skills({ userData }: IUserData): JSX.Element {
   return (
     <>
       <Box className="Skills">
-        <Heading align="center" fontSize="20px" backgroundColor="gray.200">SKILLS</Heading>
+        <Heading align="center"fontWeight="medium" fontSize="18px" backgroundColor="rgb(247,247,247)" marginBottom="5px">SKILLS</Heading>
         {userData.skill.map((obj, index) => (
-          <Box key={index}> {obj.skill} </Box>
+          <Stack key={index} spacing="10px"> <StackItem>{obj.skill}</StackItem> </Stack>
         ))}
         <IconButton
           aria-label="Add"
           onClick={onOpen}
           icon={<IoMdAdd />}
           isRound={true}
+          marginLeft="40%"
+          size="sm"
+          variant="outline"
+          marginTop="5px"
         />
         <Modal isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
           <ModalContent>
-            <ModalHeader>Add Another Skill</ModalHeader>
+            <ModalHeader fontWeight="medium" textAlign="center">ADD SKILL</ModalHeader>
             <ModalCloseButton />
             <ModalBody>
               <SkillsUpload />
             </ModalBody>
-            <ModalFooter>
-              <Button colorScheme="blue" mr={3} onClick={onClose}>
-                Close
-              </Button>
-            </ModalFooter>
+            <ModalFooter/>
           </ModalContent>
         </Modal>
       </Box>

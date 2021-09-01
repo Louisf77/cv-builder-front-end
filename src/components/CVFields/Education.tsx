@@ -13,7 +13,7 @@ import {
   useDisclosure,
   IconButton,
   Stack,
-  StackDivider
+  StackDivider,
 } from "@chakra-ui/react";
 import EducationUpload from "../DataUpload/EducationUpload";
 import { IUserData } from "../../utils/types";
@@ -25,16 +25,22 @@ export default function Education({ userData }: IUserData): JSX.Element {
   return (
     <>
       <Box className="Education">
-        <Heading align="center" fontSize="20px" fontWeight="medium">EDUCATION</Heading>
+        <Heading align="center" fontSize="20px" fontWeight="medium">
+          EDUCATION
+        </Heading>
         {userData.education.map((obj, index) => (
-          <Stack key={index}
-          spacing="10px">
+          <Stack key={index} spacing="10px">
             <List>
-              <ListItem fontSize="11px" fontWeight="bold">{obj.subject}</ListItem>
-              <ListItem>
-                {obj.institution_name} | {timeConverter(obj.start_date)} - {timeConverter(obj.end_date)}
+              <ListItem fontSize="11px" fontWeight="bold">
+                {obj.subject}
               </ListItem>
-              <ListItem>Qualification Level: {obj.qualification_level}</ListItem>
+              <ListItem>
+                {obj.institution_name} | {timeConverter(obj.start_date)} -{" "}
+                {timeConverter(obj.end_date)}
+              </ListItem>
+              <ListItem>
+                Qualification Level: {obj.qualification_level}
+              </ListItem>
               <ListItem>Grade(s) Acheived: {obj.grade}</ListItem>
             </List>
             <StackDivider borderColor="gray.200" />
@@ -52,7 +58,9 @@ export default function Education({ userData }: IUserData): JSX.Element {
         <Modal isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
           <ModalContent>
-            <ModalHeader textAlign="center" fontWeight="medium">ADD EDUCATION</ModalHeader>
+            <ModalHeader textAlign="center" fontWeight="medium">
+              ADD EDUCATION
+            </ModalHeader>
             <ModalCloseButton />
             <ModalBody>
               <EducationUpload />

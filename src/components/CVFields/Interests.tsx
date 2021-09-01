@@ -22,9 +22,18 @@ export default function Interests({ userData }: IUserData): JSX.Element {
   return (
     <>
       <Box className="interests">
-        <Heading align="center" fontWeight="medium"fontSize="18px" marginBottom="5px">INTERESTS</Heading>
+        <Heading
+          align="center"
+          fontWeight="medium"
+          fontSize="18px"
+          marginBottom="5px"
+        >
+          INTERESTS
+        </Heading>
         {userData.interest.map((obj, index) => (
-          <Stack key={index} spacing="5px"><StackItem>{obj.interest}</StackItem></Stack>
+          <Stack key={index} spacing="5px">
+            <StackItem>{obj.interest}</StackItem>
+          </Stack>
         ))}
         <IconButton
           aria-label="Add"
@@ -38,7 +47,9 @@ export default function Interests({ userData }: IUserData): JSX.Element {
         <Modal isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
           <ModalContent>
-            <ModalHeader textAlign="center" fontWeight="medium">ADD INTEREST</ModalHeader>
+            <ModalHeader textAlign="center" fontWeight="medium">
+              ADD INTEREST
+            </ModalHeader>
             <ModalCloseButton />
             <ModalBody>
               <InterestsUpload />

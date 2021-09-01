@@ -4,8 +4,6 @@ import { HashRouter as Router, Link } from "react-router-dom";
 import { userContext } from "../../App";
 import { useAuth0 } from "@auth0/auth0-react";
 
-
-
 export default function BasicDataUpload(): JSX.Element {
   const { user, isAuthenticated, isLoading } = useAuth0();
   const userID = useContext(userContext);
@@ -16,7 +14,7 @@ export default function BasicDataUpload(): JSX.Element {
   const [email, setEmail] = useState("");
   const [mobile, setMobile] = useState("");
   const [address, setAddress] = useState("");
-  
+
   const onSubmit = async () => {
     try {
       await fetch(apiBaseURL + "/create/personal-details", {
@@ -27,7 +25,7 @@ export default function BasicDataUpload(): JSX.Element {
           dob: dob,
           email: email,
           mobile: mobile,
-          sub: user?.sub
+          sub: user?.sub,
         }),
         headers: { "Content-Type": "application/json" },
       });
@@ -46,7 +44,14 @@ export default function BasicDataUpload(): JSX.Element {
         backgroundColor="white"
         paddingTop="50px"
       >
-        <Heading align="center" fontSize="20px" fontWeight="medium" marginBottom="50px">INPUT YOUR PERSONAL DETAILS TO GET STARTED</Heading>
+        <Heading
+          align="center"
+          fontSize="20px"
+          fontWeight="medium"
+          marginBottom="50px"
+        >
+          INPUT YOUR PERSONAL DETAILS TO GET STARTED
+        </Heading>
         <Stack align="center">
           <Input
             type="form"

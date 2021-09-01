@@ -13,7 +13,7 @@ import {
   ModalFooter,
   useDisclosure,
   IconButton,
-  StackDivider
+  StackDivider,
 } from "@chakra-ui/react";
 import WorkUpload from "../DataUpload/WorkUpload";
 import { IUserData } from "../../utils/types";
@@ -25,14 +25,19 @@ export default function Work({ userData }: IUserData): JSX.Element {
   return (
     <>
       <Box className="work">
-        <Heading align="center" fontWeight="medium" fontSize="20px">EXPERIENCE</Heading>
+        <Heading align="center" fontWeight="medium" fontSize="20px">
+          EXPERIENCE
+        </Heading>
         {userData.work.map((obj, index) => (
-          <Stack key={index}
-          spacing="10px"
-          >
+          <Stack key={index} spacing="10px">
             <List>
-              <ListItem fontWeight="bold" fontSize="11px">{obj.role}</ListItem>
-              <ListItem fontStyle="italic" fontSize="11px">{obj.company_name} | {timeConverter(obj.start_date)} - {timeConverter(obj.end_date)}</ListItem>
+              <ListItem fontWeight="bold" fontSize="11px">
+                {obj.role}
+              </ListItem>
+              <ListItem fontStyle="italic" fontSize="11px">
+                {obj.company_name} | {timeConverter(obj.start_date)} -{" "}
+                {timeConverter(obj.end_date)}
+              </ListItem>
               <ListItem>{obj.responsibilities}</ListItem>
             </List>
             <StackDivider borderColor="gray.200" />
@@ -50,7 +55,9 @@ export default function Work({ userData }: IUserData): JSX.Element {
         <Modal isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
           <ModalContent>
-            <ModalHeader fontWeight="medium" textAlign="center">ADD WORK EXPERIENCE</ModalHeader>
+            <ModalHeader fontWeight="medium" textAlign="center">
+              ADD WORK EXPERIENCE
+            </ModalHeader>
             <ModalCloseButton />
             <ModalBody>
               <WorkUpload />

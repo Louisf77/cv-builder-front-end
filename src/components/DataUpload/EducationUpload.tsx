@@ -21,7 +21,7 @@ export default function EducationUpload(): JSX.Element {
           endDate: endDate,
           qualificationLevel: qualificationLevel,
           grade: grade,
-          subject:subject
+          subject: subject,
         }),
         headers: { "Content-Type": "application/json" },
       });

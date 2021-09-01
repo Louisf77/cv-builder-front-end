@@ -1,4 +1,3 @@
-
 import { useAuth0 } from "@auth0/auth0-react";
 
 const Profile = () => {
@@ -8,14 +7,11 @@ const Profile = () => {
     return <div>Loading ...</div>;
   }
 
-      if (isAuthenticated){
-          return (
-            user?.sub
-          )
-      }
-      else {
-          return false
-      }
+  if (isAuthenticated) {
+    return user?.sub;
+  } else {
+    return false;
+  }
 };
 
 export default Profile;

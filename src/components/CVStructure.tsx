@@ -1,4 +1,4 @@
-import { Box, Grid, GridItem, Stack,StackDivider } from "@chakra-ui/react";
+import { Box, Grid, GridItem, Stack, StackDivider } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { ICVLayout } from "../utils/types";
 import Education from "./CVFields/Education";
@@ -75,7 +75,16 @@ export default function CVLayout(): JSX.Element {
   }, [apiBaseURL, userID]);
   return (
     <Box backgroundColor="gray.50" minH="100vh">
-    <Box maxWidth="595px" height="842px" alignItems="center" backgroundColor="white" margin="auto"  boxShadow="lg" fontSize="10px" overflowY="scroll" sx={{
+      <Box
+        maxWidth="595px"
+        height="842px"
+        alignItems="center"
+        backgroundColor="white"
+        margin="auto"
+        boxShadow="lg"
+        fontSize="10px"
+        overflowY="scroll"
+        sx={{
           "&::-webkit-scrollbar": {
             width: "10px",
             borderRadius: "8px",
@@ -85,27 +94,36 @@ export default function CVLayout(): JSX.Element {
             backgroundColor: "gray.200",
             borderRadius: "10px",
           },
-        }}>
-      <CVHeader userData={userData} />
-      <Grid templateColumns="repeat(10,1fr)" marginTop="15px" paddingLeft="10px" paddingRight="10px">
-        <GridItem colSpan={3} >
-          <Stack divider={<StackDivider borderColor="gray.200" />}
-        spacing="10px">
-          <Bio userData={userData} />
-          <Skills userData={userData} />
-          <Interests userData={userData} />
-          </Stack>
-        </GridItem>
-        <GridItem colSpan={7} marginLeft="20px">
-        <Stack
-        divider={<StackDivider borderColor="gray.200" />}
-        spacing="10px"
+        }}
+      >
+        <CVHeader userData={userData} />
+        <Grid
+          templateColumns="repeat(10,1fr)"
+          marginTop="15px"
+          paddingLeft="10px"
+          paddingRight="10px"
         >
-          <Education userData={userData} />
-          <Work userData={userData} />
-          </Stack>
-        </GridItem>
-      </Grid>
-    </ Box>
-    </Box>  );
+          <GridItem colSpan={3}>
+            <Stack
+              divider={<StackDivider borderColor="gray.200" />}
+              spacing="10px"
+            >
+              <Bio userData={userData} />
+              <Skills userData={userData} />
+              <Interests userData={userData} />
+            </Stack>
+          </GridItem>
+          <GridItem colSpan={7} marginLeft="20px">
+            <Stack
+              divider={<StackDivider borderColor="gray.200" />}
+              spacing="10px"
+            >
+              <Education userData={userData} />
+              <Work userData={userData} />
+            </Stack>
+          </GridItem>
+        </Grid>
+      </Box>
+    </Box>
+  );
 }

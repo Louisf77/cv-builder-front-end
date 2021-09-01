@@ -1,30 +1,32 @@
 import {
-    Heading,
-    Box,
-    Modal,
-    ModalOverlay,
-    ModalContent,
-    ModalHeader,
-    ModalCloseButton,
-    ModalBody,
-    ModalFooter,
-    useDisclosure,
-    IconButton,
-  } from "@chakra-ui/react";
-  import BioUpload from "../DataUpload/BioUpload";
-  import { IUserData } from "../../utils/types";
-  import { IoMdAdd } from "react-icons/io";
+  Heading,
+  Box,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalCloseButton,
+  ModalBody,
+  ModalFooter,
+  useDisclosure,
+  IconButton,
+} from "@chakra-ui/react";
+import BioUpload from "../DataUpload/BioUpload";
+import { IUserData } from "../../utils/types";
+import { IoMdAdd } from "react-icons/io";
 
-export default function Bio({userData}:IUserData):JSX.Element{
-    const { isOpen, onOpen, onClose } = useDisclosure();
-    return(
-        <>
-        <Box className="Bio">
-            <Heading align="center" fontWeight="medium"fontSize="18px" >ABOUT ME</Heading>
-            {userData.bio.map((obj, index) => (
-              <Box key={index}>{obj.bio}</Box>
-            ))}
-            <IconButton
+export default function Bio({ userData }: IUserData): JSX.Element {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  return (
+    <>
+      <Box className="Bio">
+        <Heading align="center" fontWeight="medium" fontSize="18px">
+          ABOUT ME
+        </Heading>
+        {userData.bio.map((obj, index) => (
+          <Box key={index}>{obj.bio}</Box>
+        ))}
+        <IconButton
           aria-label="Add"
           onClick={onOpen}
           icon={<IoMdAdd />}
@@ -36,7 +38,9 @@ export default function Bio({userData}:IUserData):JSX.Element{
         <Modal isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
           <ModalContent>
-            <ModalHeader textAlign="center" fontWeight="medium">ADD A BIT ABOUT YOURSELF</ModalHeader>
+            <ModalHeader textAlign="center" fontWeight="medium">
+              ADD A BIT ABOUT YOURSELF
+            </ModalHeader>
             <ModalCloseButton />
             <ModalBody>
               <BioUpload />
@@ -44,7 +48,7 @@ export default function Bio({userData}:IUserData):JSX.Element{
             <ModalFooter />
           </ModalContent>
         </Modal>
-        </Box>
-        </>
-    )
+      </Box>
+    </>
+  );
 }

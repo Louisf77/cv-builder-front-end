@@ -22,9 +22,20 @@ export default function Skills({ userData }: IUserData): JSX.Element {
   return (
     <>
       <Box className="Skills">
-        <Heading align="center"fontWeight="medium" fontSize="18px" backgroundColor="rgb(247,247,247)" marginBottom="5px">SKILLS</Heading>
+        <Heading
+          align="center"
+          fontWeight="medium"
+          fontSize="18px"
+          backgroundColor="rgb(247,247,247)"
+          marginBottom="5px"
+        >
+          SKILLS
+        </Heading>
         {userData.skill.map((obj, index) => (
-          <Stack key={index} spacing="10px"> <StackItem>{obj.skill}</StackItem> </Stack>
+          <Stack key={index} spacing="10px">
+            {" "}
+            <StackItem>{obj.skill}</StackItem>{" "}
+          </Stack>
         ))}
         <IconButton
           aria-label="Add"
@@ -39,12 +50,14 @@ export default function Skills({ userData }: IUserData): JSX.Element {
         <Modal isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
           <ModalContent>
-            <ModalHeader fontWeight="medium" textAlign="center">ADD SKILL</ModalHeader>
+            <ModalHeader fontWeight="medium" textAlign="center">
+              ADD SKILL
+            </ModalHeader>
             <ModalCloseButton />
             <ModalBody>
               <SkillsUpload />
             </ModalBody>
-            <ModalFooter/>
+            <ModalFooter />
           </ModalContent>
         </Modal>
       </Box>

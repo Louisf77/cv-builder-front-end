@@ -27,7 +27,9 @@ export default function InterestsUpload(): JSX.Element {
         placeholder="Add Interest"
         onChange={(e) => setInterest(e.target.value)}
       />
-      <Button onClick={onSubmit} variant="outline">Save</Button>
+      <Button onClick={onSubmit} variant="outline">
+        Save
+      </Button>
     </Stack>
   );
 }

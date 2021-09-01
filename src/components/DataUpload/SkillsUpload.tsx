@@ -23,7 +23,9 @@ export default function SkillsUpload(): JSX.Element {
         value={skill}
         onChange={(e) => setSkill(e.target.value)}
       />
-      <Button onClick={onSubmit} variant="outline">Add</Button>
+      <Button onClick={onSubmit} variant="outline">
+        Add
+      </Button>
     </Stack>
   );
 }

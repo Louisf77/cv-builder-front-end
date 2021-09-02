@@ -1,4 +1,4 @@
-import { ChakraProvider } from "@chakra-ui/react";
+import { Box, ChakraProvider } from "@chakra-ui/react";
 import CV from "./components/CVDisplay";
 import GreetingPage from "./components/GreetingPage";
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
@@ -41,6 +41,7 @@ function App(): JSX.Element {
     <>
       <Router>
         <ChakraProvider theme={theme}>
+        <Box backgroundColor="gray.50" minH="100vh">
           <subContext.Provider value={user?.sub}>
             <Switch>
               {memTest > 0 ? (
@@ -57,6 +58,7 @@ function App(): JSX.Element {
               )}
             </Switch>
           </subContext.Provider>
+          </Box>
         </ChakraProvider>
       </Router>
     </>

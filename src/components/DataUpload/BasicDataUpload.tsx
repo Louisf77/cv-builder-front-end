@@ -1,12 +1,11 @@
 import { useContext, useState } from "react";
 import { Box, Button, Center, Heading, Input, Stack } from "@chakra-ui/react";
 import { HashRouter as Router, Link } from "react-router-dom";
-import { subContext} from "../../App";
+import { subContext } from "../../App";
 
 
 export default function BasicDataUpload(): JSX.Element {
- 
-  const sub = useContext(subContext)
+  const sub = useContext(subContext);
   const apiBaseURL = process.env.REACT_APP_API_BASE;
   const [firstName, setFirstName] = useState("");
   const [surname, setSurname] = useState("");
@@ -25,7 +24,7 @@ export default function BasicDataUpload(): JSX.Element {
           dob: dob,
           email: email,
           mobile: mobile,
-          address:address,
+          address: address,
           sub: sub,
         }),
         headers: { "Content-Type": "application/json" },
@@ -51,33 +50,33 @@ export default function BasicDataUpload(): JSX.Element {
           fontWeight="medium"
           marginBottom="50px"
         >
-          INPUT YOUR PERSONAL DETAILS TO GET STARTED
+          INPUT YOUR PERSONAL DETAILS
         </Heading>
         <Stack align="center">
           <Input
             type="form"
-            placeholder="Input first name....."
+            placeholder="Input first name"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
             width="600px"
           />
           <Input
             type="form"
-            placeholder="Input surname....."
+            placeholder="Input surname"
             value={surname}
             onChange={(e) => setSurname(e.target.value)}
             width="600px"
           />
           <Input
             type="form"
-            placeholder="Input date of birth in format MM-DD-YYYY....."
+            placeholder="Input date of birth in format MM-DD-YYYY"
             value={dob}
             onChange={(e) => setDob(e.target.value)}
             width="600px"
           />
           <Input
             type="form"
-            placeholder="Input email....."
+            placeholder="Input email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             width="600px"
@@ -85,7 +84,7 @@ export default function BasicDataUpload(): JSX.Element {
           />
           <Input
             type="form"
-            placeholder="Input mobile....."
+            placeholder="Input mobile"
             value={mobile}
             onChange={(e) => setMobile(e.target.value)}
             width="600px"

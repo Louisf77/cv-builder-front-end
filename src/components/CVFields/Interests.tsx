@@ -28,7 +28,6 @@ export default function Interests({ userData }: IUserData): JSX.Element {
           fontSize="18px"
           marginBottom="5px"
           backgroundColor="rgb(247,247,247)"
-           
         >
           INTERESTS
         </Heading>

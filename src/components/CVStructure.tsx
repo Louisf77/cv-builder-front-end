@@ -14,9 +14,9 @@ import Software from "./CVFields/Software";
 export default function CVLayout(): JSX.Element {
   const apiBaseURL = process.env.REACT_APP_API_BASE;
   const sub = useContext(subContext);
-  const [userData,setUserData] = useState<ICVLayout>({
+  const [userData, setUserData] = useState<ICVLayout>({
     user_id: 0,
-    sub:"",
+    sub: "",
     first_name: "",
     surname: "",
     dob: "",
@@ -64,10 +64,10 @@ export default function CVLayout(): JSX.Element {
     ],
     software: [
       {
-        software_id:0,
-        software:""
-      }
-    ]
+        software_id: 0,
+        software: "",
+      },
+    ],
   });
   useEffect(() => {
     async function getData() {
@@ -75,14 +75,13 @@ export default function CVLayout(): JSX.Element {
         const response = await fetch(apiBaseURL + `/viewCV/${sub}`);
         const fullUserData = await response.json();
         setUserData(fullUserData.data.userData);
-        
       } catch (err) {
         console.error(err.message);
       }
     }
     getData();
   }, [apiBaseURL, sub]);
- 
+
   return (
     <Box backgroundColor="gray.50" minH="100vh">
       <Box
@@ -122,7 +121,6 @@ export default function CVLayout(): JSX.Element {
               <Software userData={userData} />
               <Skills userData={userData} />
               <Interests userData={userData} />
-              
             </Stack>
           </GridItem>
           <GridItem colSpan={7} marginLeft="20px">

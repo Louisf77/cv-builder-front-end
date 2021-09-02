@@ -28,7 +28,9 @@ export default function SoftwareUpload(): JSX.Element {
         value={software}
         onChange={(e) => setSoftware(e.target.value)}
       />
-      <Button onClick={onSubmit} variant="outline" >Add</Button>
+      <Button onClick={onSubmit} variant="outline">
+        Add
+      </Button>
     </Stack>
   );
 }

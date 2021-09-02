@@ -1,6 +1,6 @@
 export interface ICVLayout {
   user_id: number;
-  sub:string
+  sub: string;
   first_name: string;
   surname: string;
   dob: string;
@@ -48,10 +48,10 @@ export interface ICVLayout {
   ];
   software: [
     {
-      software_id:number
-      software:string
+      software_id: number;
+      software: string;
     }
-  ]
+  ];
 }
 
 export interface IUserData {

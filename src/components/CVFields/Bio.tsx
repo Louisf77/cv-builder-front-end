@@ -20,9 +20,13 @@ export default function Bio({ userData }: IUserData): JSX.Element {
   return (
     <>
       <Box className="Bio">
-        <Heading align="center" fontWeight="medium" fontSize="18px" 
-            backgroundColor="rgb(247,247,247)"
-            marginBottom="5px">
+        <Heading
+          align="center"
+          fontWeight="medium"
+          fontSize="18px"
+          backgroundColor="rgb(247,247,247)"
+          marginBottom="5px"
+        >
           ABOUT ME
         </Heading>
         {userData.bio.map((obj, index) => (

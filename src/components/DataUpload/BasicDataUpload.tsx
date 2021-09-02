@@ -1,12 +1,12 @@
 import { useContext, useState } from "react";
 import { Box, Button, Center, Heading, Input, Stack } from "@chakra-ui/react";
 import { HashRouter as Router, Link } from "react-router-dom";
-import { userContext } from "../../App";
-import { useAuth0 } from "@auth0/auth0-react";
+import { subContext} from "../../App";
+
 
 export default function BasicDataUpload(): JSX.Element {
-  const { user, isAuthenticated, isLoading } = useAuth0();
-  const userID = useContext(userContext);
+ 
+  const sub = useContext(subContext)
   const apiBaseURL = process.env.REACT_APP_API_BASE;
   const [firstName, setFirstName] = useState("");
   const [surname, setSurname] = useState("");
@@ -25,7 +25,8 @@ export default function BasicDataUpload(): JSX.Element {
           dob: dob,
           email: email,
           mobile: mobile,
-          sub: user?.sub,
+          address:address,
+          sub: sub,
         }),
         headers: { "Content-Type": "application/json" },
       });
@@ -80,6 +81,7 @@ export default function BasicDataUpload(): JSX.Element {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             width="600px"
+            isRequired={true}
           />
           <Input
             type="form"
@@ -96,7 +98,7 @@ export default function BasicDataUpload(): JSX.Element {
             width="600px"
           />
           <Router>
-            <Link to={`/viewCV/${userID}`}>
+            <Link to={`/viewCV/${sub}`}>
               <Button onClick={onSubmit} variant="outline" marginTop="20px">
                 Save & Continue
               </Button>

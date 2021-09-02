@@ -13,6 +13,7 @@
     "@fontsource/rubik": "^4.5.0",
     "@types/firebase": "^3.2.1",
     "@types/react-router-dom": "^5.1.8",
+    "dayjs": "^1.10.6",
     "firebase": "^9.0.1",
     "firebaseui": "^5.0.0",
     "framer-motion": "^4",

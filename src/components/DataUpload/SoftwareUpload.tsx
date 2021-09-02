@@ -2,17 +2,17 @@ import { Button, Input, Stack } from "@chakra-ui/react";
 import { useState, useContext } from "react";
 import { subContext } from "../../App";
 
-export default function BioUpload(): JSX.Element {
+export default function SoftwareUpload(): JSX.Element {
   const apiBaseURL = process.env.REACT_APP_API_BASE;
   const sub = useContext(subContext);
-  const [bio, setBio] = useState("");
+  const [software, setSoftware] = useState("");
 
   const onSubmit = async () => {
     try {
-      await fetch(apiBaseURL + `/create/bio/${sub}`, {
+      await fetch(apiBaseURL + `/create/software/${sub}`, {
         method: "POST",
         body: JSON.stringify({
-          bio: bio,
+          software: software,
         }),
         headers: { "Content-Type": "application/json" },
       });
@@ -24,11 +24,11 @@ export default function BioUpload(): JSX.Element {
     <Stack>
       <Input
         type="form"
-        placeholder="Add a bit about yourself"
-        value={bio}
-        onChange={(e) => setBio(e.target.value)}
+        placeholder="Add a software skill"
+        value={software}
+        onChange={(e) => setSoftware(e.target.value)}
       />
-      <Button onClick={onSubmit}>Add</Button>
+      <Button onClick={onSubmit} variant="outline" >Add</Button>
     </Stack>
   );
 }

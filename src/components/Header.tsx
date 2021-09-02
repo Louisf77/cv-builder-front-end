@@ -1,5 +1,5 @@
-import LoginButton from "./LoginButton";
-import LogoutButton from "./LogoutButton";
+import LoginButton from "./Auth/LoginButton";
+import LogoutButton from "./Auth/LogoutButton";
 
 import { useAuth0 } from "@auth0/auth0-react";
 

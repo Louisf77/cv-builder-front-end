@@ -2,33 +2,59 @@ import { ChakraProvider } from "@chakra-ui/react";
 import CV from "./components/CVDisplay";
 import GreetingPage from "./components/GreetingPage";
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
-import { useState, createContext } from "react";
+import { useState, createContext,} from "react";
 import { theme } from "./utils/themes";
 import "@fontsource/montserrat";
 import { useAuth0 } from "@auth0/auth0-react";
 import Header from "./components/Header";
+import { useEffect } from "react";
 
-export const userContext = createContext<number>(1);
+export const userContext = createContext<string>("");
+export const subContext = createContext<string|undefined>("")
+
 
 function App(): JSX.Element {
-  const { user, isAuthenticated, isLoading } = useAuth0();
-  const [userID, setUserID] = useState<number>(1);
+  const { user } = useAuth0();
+  const [userID, setUserID] = useState<string>("");  
+  const [memTest,setMemTest] = useState<number>(0)
+  const apiBaseURL = process.env.REACT_APP_API_BASE;
+  useEffect(() => {
+    if (user?.sub !== undefined) {
+    setUserID(user.sub)
+    }
+  },[user?.sub])
 
+    useEffect(() => {
+      async function getData() {
+        if (userID !== ""){
+        try {
+          const response = await fetch(apiBaseURL + `/${userID}`);
+          setMemTest(await response.json());
+        } catch (err) {
+          console.error(err.message);
+        }
+      }
+    }
+      getData();
+    }, [apiBaseURL,userID]);
+  console.log(memTest)
   return (
     <>
       <Router>
         <ChakraProvider theme={theme}>
-          <userContext.Provider value={userID}>
+          <subContext.Provider value = {user?.sub}>
             <Header />
             <Switch>
-              <Route path={`/viewCV/${userID}`}>
+              { memTest > 0 ? <CV /> : <><Route  path={`/viewCV/${userID}`}>  
                 <CV />
               </Route>
               <Route path="/">
                 <GreetingPage />
               </Route>
+              </>}
+              
             </Switch>
-          </userContext.Provider>
+            </subContext.Provider>
         </ChakraProvider>
       </Router>
     </>

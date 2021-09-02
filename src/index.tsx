@@ -11,7 +11,6 @@ ReactDOM.render(
       redirectUri={window.location.origin}
     >
       <App />
-      {console.log(window.location.origin)}
     </Auth0Provider>
     ,
   </React.StrictMode>,

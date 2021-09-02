@@ -1,14 +1,14 @@
 import { Button, Input, Stack } from "@chakra-ui/react";
 import { useState, useContext } from "react";
-import { userContext } from "../../App";
+import { subContext } from "../../App";
 
 export default function InterestsUpload(): JSX.Element {
   const apiBaseURL = process.env.REACT_APP_API_BASE;
-  const userID = useContext(userContext);
+  const sub = useContext(subContext);
   const [interest, setInterest] = useState("");
   const onSubmit = async () => {
     try {
-      await fetch(apiBaseURL + `/create/interests/${userID}`, {
+      await fetch(apiBaseURL + `/create/interests/${sub}`, {
         method: "POST",
         body: JSON.stringify({
           interest: interest,

@@ -1,10 +1,10 @@
 import { Button, Input, Stack, Textarea } from "@chakra-ui/react";
 import { useState } from "react";
 import { useContext } from "react";
-import { userContext } from "../../App";
+import { subContext } from "../../App";
 
 export default function WorkUpload(): JSX.Element {
-  const userID = useContext(userContext);
+  const sub = useContext(subContext);
   const apiBaseURL = process.env.REACT_APP_API_BASE;
   const [companyName, setCompanyName] = useState("");
   const [role, setRole] = useState("");
@@ -13,7 +13,7 @@ export default function WorkUpload(): JSX.Element {
   const [responsibilities, setResponsibilities] = useState("");
   const onSubmit = async () => {
     try {
-      await fetch(apiBaseURL + `/create/work/${userID}`, {
+      await fetch(apiBaseURL + `/create/work/${sub}`, {
         method: "POST",
         body: JSON.stringify({
           companyName: companyName,

@@ -4,8 +4,8 @@ import Header from "./Header";
 export default function CV(): JSX.Element {
   return (
     <>
-    <Header />
-    <CVLayout />
+      <Header />
+      <CVLayout />
     </>
   );
 }

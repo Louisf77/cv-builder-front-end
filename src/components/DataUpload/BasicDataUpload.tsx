@@ -3,7 +3,6 @@ import { Box, Button, Center, Heading, Input, Stack } from "@chakra-ui/react";
 import { HashRouter as Router, Link } from "react-router-dom";
 import { subContext } from "../../App";
 
-
 export default function BasicDataUpload(): JSX.Element {
   const sub = useContext(subContext);
   const apiBaseURL = process.env.REACT_APP_API_BASE;

@@ -1,8 +1,10 @@
-import { Button, Input, Textarea } from "@chakra-ui/react";
+import { Button, Input, Stack, Textarea } from "@chakra-ui/react";
 import { useState } from "react";
-import { IWork } from "../../utils/types";
+import { useContext } from "react";
+import { subContext } from "../../App";
 
-export default function WorkUpload({ userID }: IWork): JSX.Element {
+export default function WorkUpload(): JSX.Element {
+  const sub = useContext(subContext);
   const apiBaseURL = process.env.REACT_APP_API_BASE;
   const [companyName, setCompanyName] = useState("");
   const [role, setRole] = useState("");
@@ -11,7 +13,7 @@ export default function WorkUpload({ userID }: IWork): JSX.Element {
   const [responsibilities, setResponsibilities] = useState("");
   const onSubmit = async () => {
     try {
-      await fetch(apiBaseURL + `/create/work/${userID}`, {
+      await fetch(apiBaseURL + `/create/work/${sub}`, {
         method: "POST",
         body: JSON.stringify({
           companyName: companyName,
@@ -27,7 +29,7 @@ export default function WorkUpload({ userID }: IWork): JSX.Element {
     }
   };
   return (
-    <>
+    <Stack>
       <Input
         type="form"
         placeholder="Input Company Name"
@@ -61,6 +63,6 @@ export default function WorkUpload({ userID }: IWork): JSX.Element {
       <Button onClick={onSubmit} variant="outline">
         Save
       </Button>
-    </>
+    </Stack>
   );
 }

@@ -1,37 +1,29 @@
-import {
-  Heading,
-  Box,
-  Grid,
-  GridItem,
-  List,
-  ListItem,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalCloseButton,
-  ModalBody,
-  ModalFooter,
-  Button,
-  useDisclosure,
-} from "@chakra-ui/react";
+import { Box, Grid, GridItem, Stack, StackDivider } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import { ICVLayout, IUserID } from "../utils/types";
-import EducationUpload from "./DataUpload/EducationUpload";
-import Education from "./Education";
+import { ICVLayout } from "../utils/types";
+import Education from "./CVFields/Education";
+import Work from "./CVFields/Work";
+import { useContext } from "react";
+import { subContext } from "../App";
+import Interests from "./CVFields/Interests";
+import Skills from "./CVFields/Skills";
+import CVHeader from "./CVFields/Header";
+import Bio from "./CVFields/Bio";
+import Software from "./CVFields/Software";
 
-export default function CVLayout({ userID }: IUserID): JSX.Element {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+export default function CVLayout(): JSX.Element {
   const apiBaseURL = process.env.REACT_APP_API_BASE;
+  const sub = useContext(subContext);
   const [userData, setUserData] = useState<ICVLayout>({
-    user_id: 1,
+    user_id: 0,
+    sub: "",
     first_name: "",
     surname: "",
     dob: "",
     email: "",
     mobile: "",
     address: "",
-    eduction: [
+    education: [
       {
         ed_id: 0,
         institution_name: "",
@@ -70,11 +62,17 @@ export default function CVLayout({ userID }: IUserID): JSX.Element {
         bio: "",
       },
     ],
+    software: [
+      {
+        software_id: 0,
+        software: "",
+      },
+    ],
   });
   useEffect(() => {
     async function getData() {
       try {
-        const response = await fetch(apiBaseURL + `/viewCV/${userID}`);
+        const response = await fetch(apiBaseURL + `/viewCV/${sub}`);
         const fullUserData = await response.json();
         setUserData(fullUserData.data.userData);
       } catch (err) {
@@ -82,93 +80,60 @@ export default function CVLayout({ userID }: IUserID): JSX.Element {
       }
     }
     getData();
-  }, [apiBaseURL, userID]);
-  return (
-    <>
-      <Heading align="center" marginTop="10px">
-        {userData.first_name} {userData.surname}
-      </Heading>
-      <Grid templateColumns="repeat(10,1fr)">
-        <GridItem colSpan={3}>
-          <Box className="Details">
-            <Heading>Details</Heading>
-            <List>
-              <ListItem>{userData.email}</ListItem>
-              <ListItem>{userData.mobile}</ListItem>
-              <ListItem>{userData.address}</ListItem>
-            </List>
-          </Box>
-          <Box className="Bio">
-            <Heading>About Me</Heading>
-            {userData.bio.map((obj, index) => (
-              <Box key={index}>{obj.bio}</Box>
-            ))}
-          </Box>
-          <Box className="Skills">
-            <Heading>Skills</Heading>
-            {userData.skill.map((obj, index) => (
-              <Box key={index}> {obj.skill} </Box>
-            ))}
-          </Box>
-        </GridItem>
-        <GridItem colSpan={7}>
-          {/* <Box className="Education">
-                   <Heading>Education</Heading>
-                    {userData.eduction.map((obj,index)=> (
-                         <Box key={index}>
-                             <List>
-                             <ListItem>{obj.institution_name}  {obj.start_date}-{obj.end_date}</ListItem>
-                             <ListItem>{obj.qualification_level}</ListItem>
-                             <ListItem>{obj.subject}</ListItem>
-                             <ListItem>{obj.grade}</ListItem>
-                             </List>
-                        </Box>
-                    ))}
-                <Button onClick={onOpen}>Open Modal</Button>
-                <Modal isOpen={isOpen} onClose={onClose}>
-                <ModalOverlay />
-                <ModalContent>
-                    <ModalHeader>Modal Title</ModalHeader>
-                    <ModalCloseButton />
-                    <ModalBody>
-                    <EducationUpload userID={userID} />
-                    </ModalBody>
-                    <ModalFooter>
-                    <Button colorScheme="blue" mr={3} onClick={onClose}>
-                        Close
-                    </Button>
-                    </ModalFooter>
-                </ModalContent>
-                </Modal>
-               </Box> */}
-          <Education userData={userData} userID={userID} />
-          <Box className="work">
-            <Heading>Experience</Heading>
-            {userData.work.map((obj, index) => (
-              <Box key={index}>
-                <List>
-                  <ListItem>{obj.company_name}</ListItem>
-                  <ListItem>
-                    {obj.start_date}-{obj.end_date}
-                  </ListItem>
-                  <ListItem>{obj.role}</ListItem>
-                  <ListItem>{obj.responsibilities}</ListItem>
-                </List>
-              </Box>
-            ))}
-          </Box>
-          <Box className="interests">
-            <Heading>Interests</Heading>
-            {userData.interest.map((obj, index) => (
-              <Box key={index}>{obj.interest}</Box>
-            ))}
-          </Box>
-        </GridItem>
-      </Grid>
+  }, [apiBaseURL, sub]);
 
-      {/* Heading of Name
-    column 1 => Details,bio,skills
-    column 2 => education,experience, interests, jobspec? */}
-    </>
+  return (
+    <Box backgroundColor="gray.50" minH="100vh">
+      <Box
+        maxWidth="595px"
+        height="842px"
+        alignItems="center"
+        backgroundColor="white"
+        margin="auto"
+        boxShadow="lg"
+        fontSize="10px"
+        overflowY="scroll"
+        sx={{
+          "&::-webkit-scrollbar": {
+            width: "10px",
+            borderRadius: "8px",
+            backgroundColor: "gray.50",
+          },
+          "&::-webkit-scrollbar-thumb": {
+            backgroundColor: "gray.200",
+            borderRadius: "10px",
+          },
+        }}
+      >
+        <CVHeader userData={userData} />
+        <Grid
+          templateColumns="repeat(10,1fr)"
+          marginTop="15px"
+          paddingLeft="10px"
+          paddingRight="10px"
+        >
+          <GridItem colSpan={3}>
+            <Stack
+              divider={<StackDivider borderColor="gray.200" />}
+              spacing="10px"
+            >
+              <Bio userData={userData} />
+              <Software userData={userData} />
+              <Skills userData={userData} />
+              <Interests userData={userData} />
+            </Stack>
+          </GridItem>
+          <GridItem colSpan={7} marginLeft="20px">
+            <Stack
+              divider={<StackDivider borderColor="gray.200" />}
+              spacing="10px"
+            >
+              <Education userData={userData} />
+              <Work userData={userData} />
+            </Stack>
+          </GridItem>
+        </Grid>
+      </Box>
+    </Box>
   );
 }

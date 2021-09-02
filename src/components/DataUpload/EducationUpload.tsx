@@ -1,10 +1,10 @@
-import { Button, Input } from "@chakra-ui/react";
-import { useState } from "react";
-import { IEducation } from "../../utils/types";
+import { Button, Input, Stack } from "@chakra-ui/react";
+import { useState, useContext } from "react";
+import { subContext } from "../../App";
 
-export default function EducationUpload({ userID }: IEducation): JSX.Element {
+export default function EducationUpload(): JSX.Element {
   const apiBaseURL = process.env.REACT_APP_API_BASE;
-
+  const sub = useContext(subContext);
   const [institutionName, setInstitutionName] = useState("");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
@@ -13,7 +13,7 @@ export default function EducationUpload({ userID }: IEducation): JSX.Element {
   const [subject, setSubject] = useState("");
   const onSubmit = async () => {
     try {
-      await fetch(apiBaseURL + `/create/education/${userID}`, {
+      await fetch(apiBaseURL + `/create/education/${sub}`, {
         method: "POST",
         body: JSON.stringify({
           institutionName: institutionName,
@@ -21,6 +21,7 @@ export default function EducationUpload({ userID }: IEducation): JSX.Element {
           endDate: endDate,
           qualificationLevel: qualificationLevel,
           grade: grade,
+          subject: subject,
         }),
         headers: { "Content-Type": "application/json" },
       });
@@ -30,7 +31,7 @@ export default function EducationUpload({ userID }: IEducation): JSX.Element {
   };
 
   return (
-    <>
+    <Stack spacing="5px">
       <Input
         type="form"
         placeholder="Input Education Institution"
@@ -70,6 +71,6 @@ export default function EducationUpload({ userID }: IEducation): JSX.Element {
       <Button onClick={onSubmit} variant="outline">
         Save
       </Button>
-    </>
+    </Stack>
   );
 }

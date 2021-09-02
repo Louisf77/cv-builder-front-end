@@ -1,12 +1,13 @@
-import { Button, Input } from "@chakra-ui/react";
-import { useState } from "react";
-import { ISkill } from "../../utils/types";
+import { Button, Input, Stack } from "@chakra-ui/react";
+import { useState, useContext } from "react";
+import { subContext } from "../../App";
 
-export default function SkillsUpload({ userID }: ISkill): JSX.Element {
+export default function SkillsUpload(): JSX.Element {
   const apiBaseURL = process.env.REACT_APP_API_BASE;
+  const sub = useContext(subContext);
   const [skill, setSkill] = useState("");
   const onSubmit = async () => {
-    await fetch(apiBaseURL + `/create/skills/${userID}`, {
+    await fetch(apiBaseURL + `/create/skills/${sub}`, {
       method: "POST",
       body: JSON.stringify({
         skill: skill,
@@ -15,14 +16,16 @@ export default function SkillsUpload({ userID }: ISkill): JSX.Element {
     });
   };
   return (
-    <>
+    <Stack>
       <Input
         type="form"
         placeholder="Add Skill"
         value={skill}
         onChange={(e) => setSkill(e.target.value)}
       />
-      <Button onClick={onSubmit}>Add</Button>
-    </>
+      <Button onClick={onSubmit} variant="outline">
+        Add
+      </Button>
+    </Stack>
   );
 }

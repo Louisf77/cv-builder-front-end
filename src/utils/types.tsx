@@ -1,31 +1,13 @@
-export interface IEducation {
-  userID: number;
-}
-
-export interface IWork {
-  userID: number;
-}
-
-export interface IInterest {
-  userID: number;
-}
-
-export interface ISkill {
-  userID: number;
-}
-export interface IUserID {
-  userID: number;
-}
-
 export interface ICVLayout {
   user_id: number;
+  sub: string;
   first_name: string;
   surname: string;
   dob: string;
   email: string;
   mobile: string;
   address: string;
-  eduction: [
+  education: [
     {
       ed_id: number;
       institution_name: string;
@@ -64,9 +46,19 @@ export interface ICVLayout {
       bio: string;
     }
   ];
+  software: [
+    {
+      software_id: number;
+      software: string;
+    }
+  ];
 }
 
-export interface IEd {
+export interface IUserData {
   userData: ICVLayout;
-  userID: number;
+}
+
+export interface IPass {
+  password: string;
+  setPassword(pasword: string): void;
 }

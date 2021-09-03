@@ -15,13 +15,13 @@ import {
 } from "@chakra-ui/react";
 
 import ReactToPdf from "react-to-pdf";
-import {BiShareAlt} from "react-icons/bi"
+import { BiShareAlt } from "react-icons/bi";
 
 import CVLayoutForPrint from "./CVStructureForPrint";
 
 const ref = React.createRef();
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export default function Download(){
+export default function Download() {
   const [print, setPrint] = useState("no");
   const handleSetPrint = () => setPrint("yes");
   const handleSetPrintNo = () => setPrint("no");
@@ -35,8 +35,7 @@ export default function Download(){
         }}
         aria-label="share"
         icon={<BiShareAlt />}
-      >
-      </IconButton>
+      ></IconButton>
       {print === "yes" && (
         <Box
           ref={ref}

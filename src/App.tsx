@@ -8,7 +8,6 @@ import "@fontsource/montserrat";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useEffect } from "react";
 
-
 export const userContext = createContext<string>("");
 export const subContext = createContext<string | undefined>("");
 function App(): JSX.Element {
@@ -59,7 +58,6 @@ function App(): JSX.Element {
                   </>
                 )}
               </Switch>
-      
             </subContext.Provider>
           </Box>
         </ChakraProvider>

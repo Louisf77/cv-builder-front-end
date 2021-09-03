@@ -1,15 +1,15 @@
 import { Box, Grid, GridItem, Stack, StackDivider } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import { ICVLayout } from "../utils/types";
-import Education from "./CVFields/Education";
-import Work from "./CVFields/Work";
+import { ICVLayout } from "../../utils/types";
+import Education from "../CVFields/Education";
+import Work from "../CVFields/Work";
 import { useContext } from "react";
-import { subContext } from "../App";
-import Interests from "./CVFields/Interests";
-import Skills from "./CVFields/Skills";
-import CVHeader from "./CVFields/Header";
-import Bio from "./CVFields/Bio";
-import Software from "./CVFields/Software";
+import { subContext } from "../../App";
+import Interests from "../CVFields/Interests";
+import Skills from "../CVFields/Skills";
+import CVHeader from "../CVFields/Header";
+import Bio from "../CVFields/Bio";
+import Software from "../CVFields/Software";
 
 export default function CVLayout(): JSX.Element {
   const apiBaseURL = process.env.REACT_APP_API_BASE;

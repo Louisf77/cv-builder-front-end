@@ -1,12 +1,15 @@
-import { Box, Center, Heading, Image } from "@chakra-ui/react";
-import SignupButton from "./Auth/SignupButton";
-import logo from "../utils/quikcvLogo"
+import { Box, Center, Heading, Image, Stack, VStack } from "@chakra-ui/react";
+import SignupButton from "../Auth/SignupButton";
+import logo from "../../utils/quikcvLogo.png"
+import icon from "../../utils/quikcvIcon.png"
 
 export default function LoginScreen(): JSX.Element {
   return (
     <>
       <Center h="100vh" w="100vw">
-        <Image src = "quikcvLogo.png" />
+        <VStack>
+        <Image src = {icon} width="135.125px"/>  
+        <Image src = {logo} width="540.5px" align="center"/>
         <Box
           width="700px"
           borderRadius="15"
@@ -15,6 +18,7 @@ export default function LoginScreen(): JSX.Element {
           boxShadow="md"
           backgroundColor="white"
           paddingTop="50px"
+          align="center"
         >
           <Heading
             align="center"
@@ -27,6 +31,7 @@ export default function LoginScreen(): JSX.Element {
 
           <SignupButton />
         </Box>
+        </VStack>
       </Center>
     </>
   );

@@ -11,6 +11,7 @@ import { HiOutlineMail } from "react-icons/hi";
 import { AiOutlinePhone } from "react-icons/ai";
 import { GrLocation } from "react-icons/gr";
 
+
 export default function CVHeader({ userData }: IUserData): JSX.Element {
   return (
     <Box backgroundColor="rgb(247,247,247)" h="180px">

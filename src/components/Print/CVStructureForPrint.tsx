@@ -1,17 +1,17 @@
 import { Box, Grid, GridItem, Stack, StackDivider } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import { ICVLayout } from "../utils/types";
-import Education from "./CVFields/Education";
-import Work from "./CVFields/Work";
+import { ICVLayout } from "../../utils/types";
+import Education from "../CVFields/Education";
+import Work from "../CVFields/Work";
 import { useContext } from "react";
-import { subContext } from "../App";
-import Interests from "./CVFields/Interests";
-import Skills from "./CVFields/Skills";
-import CVHeader from "./CVFields/Header";
-import Bio from "./CVFields/Bio";
-import Software from "./CVFields/Software";
+import { subContext } from "../../App";
+import Interests from "../CVFields/Interests";
+import Skills from "../CVFields/Skills";
+import CVHeader from "../CVFields/Header";
+import Bio from "../CVFields/Bio";
+import Software from "../CVFields/Software";
 
-export default function CVLayout(): JSX.Element {
+export default function CVLayoutForPrint(): JSX.Element {
   const apiBaseURL = process.env.REACT_APP_API_BASE;
   const sub = useContext(subContext);
   const [userData, setUserData] = useState<ICVLayout>({
@@ -85,14 +85,12 @@ export default function CVLayout(): JSX.Element {
   return (
     <Box backgroundColor="gray.50" minH="100vh">
       <Box
-        maxWidth="595px"
-        height="842px"
+        maxWidth="795px"
         alignItems="center"
         backgroundColor="white"
         margin="auto"
         boxShadow="lg"
         fontSize="10px"
-        overflowY="scroll"
         sx={{
           "&::-webkit-scrollbar": {
             width: "10px",
@@ -109,8 +107,8 @@ export default function CVLayout(): JSX.Element {
         <Grid
           templateColumns="repeat(10,1fr)"
           marginTop="15px"
-          paddingLeft="10px"
-          paddingRight="10px"
+          paddingLeft="20px"
+          paddingRight="20px"
         >
           <GridItem colSpan={3}>
             <Stack
@@ -123,7 +121,7 @@ export default function CVLayout(): JSX.Element {
               <Interests userData={userData} />
             </Stack>
           </GridItem>
-          <GridItem colSpan={7} marginLeft="20px">
+          <GridItem colSpan={7} marginLeft="50px">
             <Stack
               divider={<StackDivider borderColor="gray.200" />}
               spacing="10px"

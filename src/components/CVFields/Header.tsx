@@ -1,5 +1,6 @@
 import {
   Box,
+  Center,
   HStack,
   IconButton,
   StackItem,
@@ -28,53 +29,55 @@ export default function CVHeader({ userData }: IUserData): JSX.Element {
       >
         {userData.first_name.toUpperCase()} {userData.surname.toUpperCase()}
       </Text>
-      <HStack spacing="20%" margin="10px" padding="10px" align="center">
-        <Box className="email" w="119px" h="30px">
-          <VStack spacing="2px">
-            <StackItem>
-              <IconButton
-                aria-label="email"
-                isRound={true}
-                icon={<HiOutlineMail />}
-                border="1px"
-                size="xs"
-                backgroundColor="rgb(247,247,247)"
-              />
-            </StackItem>
-            <StackItem>{userData.email}</StackItem>
-          </VStack>
-        </Box>
-        <Box className="mobile" w="119px" h="30px">
-          <VStack spacing="2px">
-            <StackItem>
-              <IconButton
-                aria-label="email"
-                isRound={true}
-                icon={<AiOutlinePhone />}
-                border="1px"
-                size="xs"
-                backgroundColor="rgb(247,247,247)"
-              />
-            </StackItem>
-            <StackItem>{userData.mobile}</StackItem>
-          </VStack>
-        </Box>
-        <Box className="address" w="119px" h="30px" alignContent="center">
-          <VStack spacing="2px">
-            <StackItem>
-              <IconButton
-                aria-label="email"
-                isRound={true}
-                icon={<GrLocation />}
-                border="1px"
-                size="xs"
-                backgroundColor="rgb(247,247,247)"
-              />
-            </StackItem>
-            <StackItem textAlign="center">{userData.address}</StackItem>
-          </VStack>
-        </Box>
-      </HStack>
+      <Center w="795px">
+        <HStack spacing="90px" margin="10px" padding="10px" align="center">
+          <Box className="email" w="159px" h="30px">
+            <VStack spacing="2px">
+              <StackItem>
+                <IconButton
+                  aria-label="email"
+                  isRound={true}
+                  icon={<HiOutlineMail />}
+                  border="1px"
+                  size="xs"
+                  backgroundColor="rgb(247,247,247)"
+                />
+              </StackItem>
+              <StackItem>{userData.email}</StackItem>
+            </VStack>
+          </Box>
+          <Box className="mobile" w="159px" h="30px">
+            <VStack spacing="2px">
+              <StackItem>
+                <IconButton
+                  aria-label="email"
+                  isRound={true}
+                  icon={<AiOutlinePhone />}
+                  border="1px"
+                  size="xs"
+                  backgroundColor="rgb(247,247,247)"
+                />
+              </StackItem>
+              <StackItem>{userData.mobile}</StackItem>
+            </VStack>
+          </Box>
+          <Box className="address" w="159px" h="30px" alignContent="center">
+            <VStack spacing="2px">
+              <StackItem>
+                <IconButton
+                  aria-label="email"
+                  isRound={true}
+                  icon={<GrLocation />}
+                  border="1px"
+                  size="xs"
+                  backgroundColor="rgb(247,247,247)"
+                />
+              </StackItem>
+              <StackItem textAlign="center">{userData.address}</StackItem>
+            </VStack>
+          </Box>
+        </HStack>
+      </Center>
     </Box>
   );
 }

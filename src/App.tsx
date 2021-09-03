@@ -1,6 +1,6 @@
-import { ChakraProvider } from "@chakra-ui/react";
-import CV from "./components/CVDisplay";
-import GreetingPage from "./components/GreetingPage";
+import { Box, ChakraProvider } from "@chakra-ui/react";
+import CV from "./components/CV Structure/CVDisplay";
+import GreetingPage from "./components/Login & greet/GreetingPage";
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import { useState, createContext } from "react";
 import { theme } from "./utils/themes";
@@ -15,7 +15,6 @@ function App(): JSX.Element {
   const [userID, setUserID] = useState<string>("");
   const [memTest, setMemTest] = useState<number>(0);
 
-  // console.log({user,userID,memTest,usersub:user?.sub,renderCount})
   const apiBaseURL = process.env.REACT_APP_API_BASE;
   useEffect(() => {
     if (user?.sub !== undefined) {
@@ -41,22 +40,26 @@ function App(): JSX.Element {
     <>
       <Router>
         <ChakraProvider theme={theme}>
-          <subContext.Provider value={user?.sub}>
-            <Switch>
-              {memTest > 0 ? (
-                <CV />
-              ) : (
-                <>
-                  <Route path={`/viewCV/${userID}`}>
+          <Box backgroundColor="gray.50" minH="100vh">
+            <subContext.Provider value={user?.sub}>
+              <Switch>
+                {memTest > 0 ? (
+                  <>
                     <CV />
-                  </Route>
-                  <Route path="/">
-                    <GreetingPage />
-                  </Route>
-                </>
-              )}
-            </Switch>
-          </subContext.Provider>
+                  </>
+                ) : (
+                  <>
+                    <Route path={`/viewCV/${userID}`}>
+                      <CV />
+                    </Route>
+                    <Route path="/">
+                      <GreetingPage />
+                    </Route>
+                  </>
+                )}
+              </Switch>
+            </subContext.Provider>
+          </Box>
         </ChakraProvider>
       </Router>
     </>

@@ -1,6 +1,6 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { Box } from "@chakra-ui/react";
-import BasicDataUpload from "./DataUpload/BasicDataUpload";
+import BasicDataUpload from "../DataUpload/BasicDataUpload";
 import LoginScreen from "./LoginScreen";
 
 export default function GreetingPage(): JSX.Element {

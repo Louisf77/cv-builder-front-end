@@ -25,7 +25,7 @@ export default function Education({ userData }: IUserData): JSX.Element {
   return (
     <>
       <Box className="Education">
-        <Heading align="center" fontSize="20px" fontWeight="medium">
+        <Heading align="center" fontSize="20px" fontWeight="medium" marginBottom="5px">
           EDUCATION
         </Heading>
         {userData.education.map((obj, index) => (

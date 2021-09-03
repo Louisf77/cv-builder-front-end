@@ -85,7 +85,7 @@ export default function CVLayoutForPrint(): JSX.Element {
   return (
     <Box backgroundColor="gray.50" minH="100vh">
       <Box
-        maxWidth="595px"
+        maxWidth="795px"
         alignItems="center"
         backgroundColor="white"
         margin="auto"
@@ -107,8 +107,8 @@ export default function CVLayoutForPrint(): JSX.Element {
         <Grid
           templateColumns="repeat(10,1fr)"
           marginTop="15px"
-          paddingLeft="10px"
-          paddingRight="10px"
+          paddingLeft="20px"
+          paddingRight="20px"
         >
           <GridItem colSpan={3}>
             <Stack
@@ -121,7 +121,7 @@ export default function CVLayoutForPrint(): JSX.Element {
               <Interests userData={userData} />
             </Stack>
           </GridItem>
-          <GridItem colSpan={7} marginLeft="20px">
+          <GridItem colSpan={7} marginLeft="50px">
             <Stack
               divider={<StackDivider borderColor="gray.200" />}
               spacing="10px"

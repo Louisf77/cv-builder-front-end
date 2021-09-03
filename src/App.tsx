@@ -7,7 +7,7 @@ import { theme } from "./utils/themes";
 import "@fontsource/montserrat";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useEffect } from "react";
-import MyDocument from "./components/Print/PDF";
+
 
 export const userContext = createContext<string>("");
 export const subContext = createContext<string | undefined>("");
@@ -16,7 +16,6 @@ function App(): JSX.Element {
   const [userID, setUserID] = useState<string>("");
   const [memTest, setMemTest] = useState<number>(0);
 
-  // console.log({user,userID,memTest,usersub:user?.sub,renderCount})
   const apiBaseURL = process.env.REACT_APP_API_BASE;
   useEffect(() => {
     if (user?.sub !== undefined) {
@@ -40,27 +39,28 @@ function App(): JSX.Element {
   console.log(memTest);
   return (
     <>
-    
       <Router>
         <ChakraProvider theme={theme}>
-        <Box backgroundColor="gray.50" minH="100vh">
-          <subContext.Provider value={user?.sub}>
-            <Switch>
-              {memTest > 0 ? (
-                <CV />
-              ) : (
-                <>
-                  <Route path={`/viewCV/${userID}`}>
+          <Box backgroundColor="gray.50" minH="100vh">
+            <subContext.Provider value={user?.sub}>
+              <Switch>
+                {memTest > 0 ? (
+                  <>
                     <CV />
-                  </Route>
-                  <Route path="/">
-                    <GreetingPage />
-                  </Route>
-                </>
-              )}
-            </Switch>
-            <MyDocument />
-          </subContext.Provider>
+                  </>
+                ) : (
+                  <>
+                    <Route path={`/viewCV/${userID}`}>
+                      <CV />
+                    </Route>
+                    <Route path="/">
+                      <GreetingPage />
+                    </Route>
+                  </>
+                )}
+              </Switch>
+      
+            </subContext.Provider>
           </Box>
         </ChakraProvider>
       </Router>

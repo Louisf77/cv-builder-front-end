@@ -1,4 +1,4 @@
-import { Box, Center, Heading, Image, Stack, VStack } from "@chakra-ui/react";
+import { Box, Center, Heading, Image, VStack } from "@chakra-ui/react";
 import SignupButton from "../Auth/SignupButton";
 import logo from "../../utils/quikcvLogo.png"
 import icon from "../../utils/quikcvIcon.png"

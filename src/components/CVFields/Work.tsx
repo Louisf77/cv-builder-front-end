@@ -25,7 +25,7 @@ export default function Work({ userData }: IUserData): JSX.Element {
   return (
     <>
       <Box className="work">
-        <Heading align="center" fontWeight="medium" fontSize="20px">
+        <Heading align="center" fontWeight="medium" fontSize="20px" marginBottom="5px">
           EXPERIENCE
         </Heading>
         {userData.work.map((obj, index) => (

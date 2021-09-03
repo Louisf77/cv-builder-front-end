@@ -1,5 +1,6 @@
 import {
   Box,
+  Center,
   HStack,
   IconButton,
   StackItem,
@@ -29,8 +30,9 @@ export default function CVHeader({ userData }: IUserData): JSX.Element {
       >
         {userData.first_name.toUpperCase()} {userData.surname.toUpperCase()}
       </Text>
-      <HStack spacing="20%" margin="10px" padding="10px" align="center">
-        <Box className="email" w="119px" h="30px">
+      <Center w="795px">
+      <HStack spacing="90px" margin="10px" padding="10px" align="center">
+        <Box className="email" w="159px" h="30px">
           <VStack spacing="2px">
             <StackItem>
               <IconButton
@@ -45,7 +47,7 @@ export default function CVHeader({ userData }: IUserData): JSX.Element {
             <StackItem>{userData.email}</StackItem>
           </VStack>
         </Box>
-        <Box className="mobile" w="119px" h="30px">
+        <Box className="mobile" w="159px" h="30px">
           <VStack spacing="2px">
             <StackItem>
               <IconButton
@@ -60,7 +62,7 @@ export default function CVHeader({ userData }: IUserData): JSX.Element {
             <StackItem>{userData.mobile}</StackItem>
           </VStack>
         </Box>
-        <Box className="address" w="119px" h="30px" alignContent="center">
+        <Box className="address" w="159px" h="30px" alignContent="center">
           <VStack spacing="2px">
             <StackItem>
               <IconButton
@@ -76,6 +78,7 @@ export default function CVHeader({ userData }: IUserData): JSX.Element {
           </VStack>
         </Box>
       </HStack>
+      </Center>
     </Box>
   );
 }

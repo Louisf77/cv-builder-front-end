@@ -1,10 +1,6 @@
 import {
   Box,
-  Button,
-  Center,
   chakra,
-  Heading,
-  Icon,
   Image,
   Stack,
   Text,

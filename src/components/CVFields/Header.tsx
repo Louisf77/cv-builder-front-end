@@ -17,27 +17,27 @@ export default function CVHeader({ userData }: IUserData): JSX.Element {
     <Box backgroundColor="rgb(247,247,247)" h="180px">
       <HStack mx="auto" width="fit-content">
         <StackItem>
-      <Text
-        fontSize="6xl"
-        fontWeight="medium"
-        align="center"
-        padding="5px"
-        color="rgb(40,164,175)"
-      >
-        {userData.first_name.toUpperCase()} 
-      </Text>
-      </StackItem>
-      <StackItem>
-        <Text
-        fontSize="6xl"
-        fontWeight="medium"
-        align="center"
-        padding="5px"
-        color="rgb(128,128,128)">
-          
-      {userData.surname.toUpperCase()}
-      </Text>
-      </StackItem>
+          <Text
+            fontSize="6xl"
+            fontWeight="medium"
+            align="center"
+            padding="5px"
+            color="rgb(40,164,175)"
+          >
+            {userData.first_name.toUpperCase()}
+          </Text>
+        </StackItem>
+        <StackItem>
+          <Text
+            fontSize="6xl"
+            fontWeight="medium"
+            align="center"
+            padding="5px"
+            color="rgb(128,128,128)"
+          >
+            {userData.surname.toUpperCase()}
+          </Text>
+        </StackItem>
       </HStack>
       <Center w="795px">
         <HStack spacing="90px" margin="10px" padding="10px" align="center">

@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-use-before-define
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import {
   Box,
   Button,
@@ -18,11 +18,14 @@ import ReactToPdf from "react-to-pdf";
 import { BiShareAlt } from "react-icons/bi";
 
 import CVLayoutForPrint from "./CVStructureForPrint";
+import { printContext } from "../../App";
+import { setPrintContext } from "../../App";
 
 const ref = React.createRef();
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export default function Download() {
-  const [print, setPrint] = useState("no");
+  const print = useContext(printContext);
+  const setPrint = useContext(setPrintContext);
   const handleSetPrint = () => setPrint("yes");
   const handleSetPrintNo = () => setPrint("no");
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -59,13 +62,12 @@ export default function Download() {
             DOWNLOAD YOUR CV
           </ModalHeader>
           <ModalCloseButton />
-          <ModalBody>
-            <div className="pdf">
+          <ModalBody mx="auto">
+            <Box className="pdf">
               <ReactToPdf targetRef={ref} filename={`.pdf`}>
                 {({ toPdf }) => <Button onClick={toPdf}>Generate PDF</Button>}
               </ReactToPdf>
-              {console.log(print)}
-            </div>
+            </Box>
           </ModalBody>
           <ModalFooter />
         </ModalContent>

@@ -16,9 +16,12 @@ import {
 import InterestsUpload from "../DataUpload/InterestsUpload";
 import { IUserData } from "../../utils/types";
 import { IoMdAdd } from "react-icons/io";
+import { useContext } from "react";
+import { printContext } from "../../App";
 
 export default function Interests({ userData }: IUserData): JSX.Element {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const print = useContext(printContext);
   return (
     <>
       <Box className="interests">
@@ -36,15 +39,17 @@ export default function Interests({ userData }: IUserData): JSX.Element {
             <StackItem>{obj.interest}</StackItem>
           </Stack>
         ))}
-        <IconButton
-          aria-label="Add"
-          onClick={onOpen}
-          icon={<IoMdAdd />}
-          isRound={true}
-          marginLeft="40%"
-          size="sm"
-          variant="outline"
-        />
+        {print !== "yes" && (
+          <IconButton
+            aria-label="Add"
+            onClick={onOpen}
+            icon={<IoMdAdd />}
+            isRound={true}
+            marginLeft="40%"
+            size="sm"
+            variant="outline"
+          />
+        )}
         <Modal isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
           <ModalContent>

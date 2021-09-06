@@ -19,9 +19,12 @@ import WorkUpload from "../DataUpload/WorkUpload";
 import { IUserData } from "../../utils/types";
 import { IoMdAdd } from "react-icons/io";
 import { timeConverter } from "../../utils/timeConverter";
+import { useContext } from "react";
+import { printContext } from "../../App";
 
 export default function Work({ userData }: IUserData): JSX.Element {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const print = useContext(printContext);
   return (
     <>
       <Box className="work">
@@ -48,15 +51,17 @@ export default function Work({ userData }: IUserData): JSX.Element {
             <StackDivider borderColor="gray.200" />
           </Stack>
         ))}
-        <IconButton
-          aria-label="Add"
-          onClick={onOpen}
-          icon={<IoMdAdd />}
-          isRound={true}
-          size="sm"
-          marginLeft="45%"
-          variant="outline"
-        />
+        {print !== "yes" && (
+          <IconButton
+            aria-label="Add"
+            onClick={onOpen}
+            icon={<IoMdAdd />}
+            isRound={true}
+            size="sm"
+            marginLeft="45%"
+            variant="outline"
+          />
+        )}
         <Modal isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
           <ModalContent>

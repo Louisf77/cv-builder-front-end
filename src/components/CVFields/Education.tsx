@@ -19,9 +19,12 @@ import EducationUpload from "../DataUpload/EducationUpload";
 import { IUserData } from "../../utils/types";
 import { IoMdAdd } from "react-icons/io";
 import { timeConverter } from "../../utils/timeConverter";
+import { useContext } from "react";
+import { printContext } from "../../App";
 
 export default function Education({ userData }: IUserData): JSX.Element {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const print = useContext(printContext);
   return (
     <>
       <Box className="Education">
@@ -51,15 +54,17 @@ export default function Education({ userData }: IUserData): JSX.Element {
             <StackDivider borderColor="gray.200" />
           </Stack>
         ))}
-        <IconButton
-          aria-label="Add"
-          onClick={onOpen}
-          icon={<IoMdAdd />}
-          isRound={true}
-          marginLeft="45%"
-          size="sm"
-          variant="outline"
-        />
+        {print !== "yes" && (
+          <IconButton
+            aria-label="Add"
+            onClick={onOpen}
+            icon={<IoMdAdd />}
+            isRound={true}
+            marginLeft="45%"
+            size="sm"
+            variant="outline"
+          />
+        )}
         <Modal isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
           <ModalContent>

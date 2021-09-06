@@ -10,6 +10,11 @@ import Skills from "../CVFields/Skills";
 import CVHeader from "../CVFields/Header";
 import Bio from "../CVFields/Bio";
 import Software from "../CVFields/Software";
+import { createContext } from "react";
+
+export const renderContext = createContext<(render: Date) => void>(() => {
+  console.log("");
+});
 
 export default function CVLayout(): JSX.Element {
   const apiBaseURL = process.env.REACT_APP_API_BASE;
@@ -69,6 +74,8 @@ export default function CVLayout(): JSX.Element {
       },
     ],
   });
+  const [render, setRender] = useState(new Date());
+
   useEffect(() => {
     async function getData() {
       try {
@@ -80,60 +87,62 @@ export default function CVLayout(): JSX.Element {
       }
     }
     getData();
-  }, [apiBaseURL, sub]);
+  }, [apiBaseURL, sub, render]);
 
   return (
-    <Box backgroundColor="gray.50" minH="100vh">
-      <Box
-        maxWidth="795px"
-        height="942px"
-        alignItems="center"
-        backgroundColor="white"
-        margin="auto"
-        boxShadow="lg"
-        fontSize="10px"
-        overflowY="scroll"
-        sx={{
-          "&::-webkit-scrollbar": {
-            width: "10px",
-            borderRadius: "8px",
-            backgroundColor: "gray.50",
-          },
-          "&::-webkit-scrollbar-thumb": {
-            backgroundColor: "gray.200",
-            borderRadius: "10px",
-          },
-        }}
-      >
-        <CVHeader userData={userData} />
-        <Grid
-          templateColumns="repeat(10,1fr)"
-          marginTop="15px"
-          paddingLeft="20px"
-          paddingRight="20px"
+    <renderContext.Provider value={setRender}>
+      <Box backgroundColor="gray.50" minH="100vh">
+        <Box
+          maxWidth="795px"
+          height="942px"
+          alignItems="center"
+          backgroundColor="white"
+          margin="auto"
+          boxShadow="lg"
+          fontSize="10px"
+          overflowY="scroll"
+          sx={{
+            "&::-webkit-scrollbar": {
+              width: "10px",
+              borderRadius: "8px",
+              backgroundColor: "gray.50",
+            },
+            "&::-webkit-scrollbar-thumb": {
+              backgroundColor: "gray.200",
+              borderRadius: "10px",
+            },
+          }}
         >
-          <GridItem colSpan={3}>
-            <Stack
-              divider={<StackDivider borderColor="gray.200" />}
-              spacing="10px"
-            >
-              <Bio userData={userData} />
-              <Software userData={userData} />
-              <Skills userData={userData} />
-              <Interests userData={userData} />
-            </Stack>
-          </GridItem>
-          <GridItem colSpan={7} marginLeft="50px">
-            <Stack
-              divider={<StackDivider borderColor="gray.200" />}
-              spacing="10px"
-            >
-              <Education userData={userData} />
-              <Work userData={userData} />
-            </Stack>
-          </GridItem>
-        </Grid>
+          <CVHeader userData={userData} />
+          <Grid
+            templateColumns="repeat(10,1fr)"
+            marginTop="15px"
+            paddingLeft="20px"
+            paddingRight="20px"
+          >
+            <GridItem colSpan={3}>
+              <Stack
+                divider={<StackDivider borderColor="gray.200" />}
+                spacing="10px"
+              >
+                <Bio userData={userData} />
+                <Software userData={userData} />
+                <Skills userData={userData} />
+                <Interests userData={userData} />
+              </Stack>
+            </GridItem>
+            <GridItem colSpan={7} marginLeft="50px">
+              <Stack
+                divider={<StackDivider borderColor="gray.200" />}
+                spacing="10px"
+              >
+                <Education userData={userData} />
+                <Work userData={userData} />
+              </Stack>
+            </GridItem>
+          </Grid>
+        </Box>
       </Box>
-    </Box>
+    </renderContext.Provider>
   );
 }

@@ -21,10 +21,13 @@ import { IoMdAdd } from "react-icons/io";
 import { timeConverter } from "../../utils/timeConverter";
 import { useContext } from "react";
 import { printContext } from "../../App";
+import { renderContext } from "../CV Structure/CVStructure";
 
 export default function Work({ userData }: IUserData): JSX.Element {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const print = useContext(printContext);
+  const setRender = useContext(renderContext);
+  const HandleSetRender = () => setRender(new Date());
   return (
     <>
       <Box className="work">
@@ -62,7 +65,13 @@ export default function Work({ userData }: IUserData): JSX.Element {
             variant="outline"
           />
         )}
-        <Modal isOpen={isOpen} onClose={onClose}>
+        <Modal
+          isOpen={isOpen}
+          onClose={() => {
+            onClose();
+            HandleSetRender();
+          }}
+        >
           <ModalOverlay />
           <ModalContent>
             <ModalHeader fontWeight="medium" textAlign="center">

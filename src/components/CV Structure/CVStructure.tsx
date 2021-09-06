@@ -86,7 +86,7 @@ export default function CVLayout(): JSX.Element {
     <Box backgroundColor="gray.50" minH="100vh">
       <Box
         maxWidth="795px"
-        height="842px"
+        height="942px"
         alignItems="center"
         backgroundColor="white"
         margin="auto"

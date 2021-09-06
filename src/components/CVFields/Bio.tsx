@@ -14,9 +14,12 @@ import {
 import BioUpload from "../DataUpload/BioUpload";
 import { IUserData } from "../../utils/types";
 import { IoMdAdd } from "react-icons/io";
+import { useContext } from "react";
+import { printContext } from "../../App";
 
 export default function Bio({ userData }: IUserData): JSX.Element {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const print = useContext(printContext);
   return (
     <>
       <Box className="Bio">
@@ -32,15 +35,17 @@ export default function Bio({ userData }: IUserData): JSX.Element {
         {userData.bio.map((obj, index) => (
           <Box key={index}>{obj.bio}</Box>
         ))}
-        <IconButton
-          aria-label="Add"
-          onClick={onOpen}
-          icon={<IoMdAdd />}
-          isRound={true}
-          marginLeft="40%"
-          size="sm"
-          variant="outline"
-        />
+        {print !== "yes" && (
+          <IconButton
+            aria-label="Add"
+            onClick={onOpen}
+            icon={<IoMdAdd />}
+            isRound={true}
+            marginLeft="40%"
+            size="sm"
+            variant="outline"
+          />
+        )}
         <Modal isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
           <ModalContent>

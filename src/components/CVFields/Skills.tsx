@@ -16,9 +16,12 @@ import {
 import SkillsUpload from "../DataUpload/SkillsUpload";
 import { IUserData } from "../../utils/types";
 import { IoMdAdd } from "react-icons/io";
+import { useContext } from "react";
+import { printContext } from "../../App";
 
 export default function Skills({ userData }: IUserData): JSX.Element {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const print = useContext(printContext);
   return (
     <>
       <Box className="Skills">
@@ -37,16 +40,18 @@ export default function Skills({ userData }: IUserData): JSX.Element {
             <StackItem>{obj.skill}</StackItem>{" "}
           </Stack>
         ))}
-        <IconButton
-          aria-label="Add"
-          onClick={onOpen}
-          icon={<IoMdAdd />}
-          isRound={true}
-          marginLeft="40%"
-          size="sm"
-          variant="outline"
-          marginTop="5px"
-        />
+        {print !== "yes" && (
+          <IconButton
+            aria-label="Add"
+            onClick={onOpen}
+            icon={<IoMdAdd />}
+            isRound={true}
+            marginLeft="40%"
+            size="sm"
+            variant="outline"
+            marginTop="5px"
+          />
+        )}
         <Modal isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
           <ModalContent>

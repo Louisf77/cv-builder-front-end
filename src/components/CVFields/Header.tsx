@@ -15,20 +15,30 @@ import { GrLocation } from "react-icons/gr";
 export default function CVHeader({ userData }: IUserData): JSX.Element {
   return (
     <Box backgroundColor="rgb(247,247,247)" h="180px">
-      <Text
-        bgGradient={[
-          "linear(to-tr, teal.300,yellow.400)",
-          "linear(to-t, blue.200, teal.500)",
-          "linear(to-b, orange.100, purple.300)",
-        ]}
-        bgClip="text"
-        fontSize="6xl"
-        fontWeight="medium"
-        align="center"
-        padding="5px"
-      >
-        {userData.first_name.toUpperCase()} {userData.surname.toUpperCase()}
-      </Text>
+      <HStack mx="auto" width="fit-content">
+        <StackItem>
+          <Text
+            fontSize="6xl"
+            fontWeight="medium"
+            align="center"
+            padding="5px"
+            color="rgb(40,164,175)"
+          >
+            {userData.first_name.toUpperCase()}
+          </Text>
+        </StackItem>
+        <StackItem>
+          <Text
+            fontSize="6xl"
+            fontWeight="medium"
+            align="center"
+            padding="5px"
+            color="rgb(128,128,128)"
+          >
+            {userData.surname.toUpperCase()}
+          </Text>
+        </StackItem>
+      </HStack>
       <Center w="795px">
         <HStack spacing="90px" margin="10px" padding="10px" align="center">
           <Box className="email" w="159px" h="30px">

@@ -18,10 +18,13 @@ import { IUserData } from "../../utils/types";
 import { IoMdAdd } from "react-icons/io";
 import { useContext } from "react";
 import { printContext } from "../../App";
+import { renderContext } from "../CV Structure/CVStructure";
 
 export default function Software({ userData }: IUserData): JSX.Element {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const print = useContext(printContext);
+  const setRender = useContext(renderContext);
+  const HandleSetRender = () => setRender(new Date());
   return (
     <>
       <Box className="Software">
@@ -51,7 +54,13 @@ export default function Software({ userData }: IUserData): JSX.Element {
             marginTop="5px"
           />
         )}
-        <Modal isOpen={isOpen} onClose={onClose}>
+        <Modal
+          isOpen={isOpen}
+          onClose={() => {
+            onClose();
+            HandleSetRender();
+          }}
+        >
           <ModalOverlay />
           <ModalContent>
             <ModalHeader fontWeight="medium" textAlign="center">

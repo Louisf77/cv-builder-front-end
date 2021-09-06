@@ -41,7 +41,7 @@ function App(): JSX.Element {
     }
     getData();
   }, [apiBaseURL, userID]);
-  console.log(memTest);
+
   return (
     <>
       <Router>

@@ -16,10 +16,14 @@ import { IUserData } from "../../utils/types";
 import { IoMdAdd } from "react-icons/io";
 import { useContext } from "react";
 import { printContext } from "../../App";
+import { renderContext } from "../CV Structure/CVStructure";
 
 export default function Bio({ userData }: IUserData): JSX.Element {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const setRender = useContext(renderContext);
+  const HandleSetRender = () => setRender(new Date());
   const print = useContext(printContext);
+
   return (
     <>
       <Box className="Bio">
@@ -46,7 +50,13 @@ export default function Bio({ userData }: IUserData): JSX.Element {
             variant="outline"
           />
         )}
-        <Modal isOpen={isOpen} onClose={onClose}>
+        <Modal
+          isOpen={isOpen}
+          onClose={() => {
+            onClose();
+            HandleSetRender();
+          }}
+        >
           <ModalOverlay />
           <ModalContent>
             <ModalHeader textAlign="center" fontWeight="medium">

@@ -1,4 +1,3 @@
-// eslint-disable-next-line no-use-before-define
 import React, { useContext } from "react";
 import {
   Box,
@@ -22,7 +21,7 @@ import { printContext } from "../../App";
 import { setPrintContext } from "../../App";
 
 const ref = React.createRef();
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+
 export default function Download() {
   const { user } = useAuth0();
   const print = useContext(printContext);

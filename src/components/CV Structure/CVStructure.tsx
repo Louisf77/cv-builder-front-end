@@ -136,8 +136,8 @@ export default function CVLayout(): JSX.Element {
                 divider={<StackDivider borderColor="gray.200" />}
                 spacing="10px"
               >
-                <Education userData={userData} />
                 <Work userData={userData} />
+                <Education userData={userData} />
               </Stack>
             </GridItem>
           </Grid>

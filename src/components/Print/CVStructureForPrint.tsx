@@ -86,6 +86,7 @@ export default function CVLayoutForPrint(): JSX.Element {
     <Box backgroundColor="gray.50" minH="100vh">
       <Box
         maxWidth="795px"
+        h="full"
         alignItems="center"
         backgroundColor="white"
         margin="auto"

@@ -16,7 +16,7 @@ import {
 
 import ReactToPdf from "react-to-pdf";
 import { BiShareAlt } from "react-icons/bi";
-
+import { useAuth0 } from "@auth0/auth0-react";
 import CVLayoutForPrint from "./CVStructureForPrint";
 import { printContext } from "../../App";
 import { setPrintContext } from "../../App";
@@ -24,6 +24,7 @@ import { setPrintContext } from "../../App";
 const ref = React.createRef();
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export default function Download() {
+  const { user } = useAuth0();
   const print = useContext(printContext);
   const setPrint = useContext(setPrintContext);
   const handleSetPrint = () => setPrint("yes");
@@ -64,7 +65,10 @@ export default function Download() {
           <ModalCloseButton />
           <ModalBody mx="auto">
             <Box className="pdf">
-              <ReactToPdf targetRef={ref} filename={`.pdf`}>
+              <ReactToPdf
+                targetRef={ref}
+                filename={`${user.given_name.toUpperCase()}_${user.family_name.toUpperCase()}CV.pdf`}
+              >
                 {({ toPdf }) => <Button onClick={toPdf}>Generate PDF</Button>}
               </ReactToPdf>
             </Box>

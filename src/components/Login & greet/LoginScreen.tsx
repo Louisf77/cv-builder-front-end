@@ -75,7 +75,7 @@ export default function LoginScreen(): JSX.Element {
               rounded="lg"
               shadow="2xl"
               src={screenShot}
-              alt="Hellonext feedback boards software screenshot"
+              alt="Dummy cv screenshot"
             />
           </Box>
         </Box>

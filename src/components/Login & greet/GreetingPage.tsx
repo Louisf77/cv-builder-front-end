@@ -8,7 +8,14 @@ export default function GreetingPage(): JSX.Element {
   const { isAuthenticated } = useAuth0();
   return (
     <Box backgroundColor="gray.50" minH="100vh">
-      {isAuthenticated ?<> <Header/> <BasicDataUpload />  </>: <LoginScreen />}
+      {isAuthenticated ? (
+        <>
+          {" "}
+          <Header /> <BasicDataUpload />{" "}
+        </>
+      ) : (
+        <LoginScreen />
+      )}
     </Box>
   );
 }

@@ -38,7 +38,7 @@ export default function Download() {
         }}
         aria-label="share"
         icon={<BiShareAlt />}
-      ></IconButton>
+      />
       {print === "yes" && (
         <Box
           ref={ref}

@@ -1,16 +1,14 @@
 import { Box, Grid, GridItem, Stack, StackDivider } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext, createContext } from "react";
 import { ICVLayout } from "../../utils/types";
-import Education from "../CVFields/Education";
-import Work from "../CVFields/Work";
-import { useContext } from "react";
 import { subContext } from "../../App";
 import Interests from "../CVFields/Interests";
 import Skills from "../CVFields/Skills";
 import CVHeader from "../CVFields/Header";
 import Bio from "../CVFields/Bio";
 import Software from "../CVFields/Software";
-import { createContext } from "react";
+import Education from "../CVFields/Education";
+import Work from "../CVFields/Work";
 
 export const renderContext = createContext<(render: Date) => void>(() => {
   console.log("");

@@ -2,11 +2,10 @@ import { Box, ChakraProvider } from "@chakra-ui/react";
 import CV from "./components/CV Structure/CVDisplay";
 import GreetingPage from "./components/Login & greet/GreetingPage";
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
-import { useState, createContext } from "react";
+import { useState, createContext, useEffect } from "react";
 import { theme } from "./utils/themes";
 import "@fontsource/montserrat";
 import { useAuth0 } from "@auth0/auth0-react";
-import { useEffect } from "react";
 
 export const userContext = createContext<string>("");
 export const subContext = createContext<string | undefined>("");

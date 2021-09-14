@@ -1,9 +1,8 @@
 import { Box, Grid, GridItem, Stack, StackDivider } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { ICVLayout } from "../../utils/types";
 import Education from "../CVFields/Education";
 import Work from "../CVFields/Work";
-import { useContext } from "react";
 import { subContext } from "../../App";
 import Interests from "../CVFields/Interests";
 import Skills from "../CVFields/Skills";

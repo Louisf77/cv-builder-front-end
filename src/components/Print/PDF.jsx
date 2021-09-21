@@ -1,8 +1,9 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import {
   Box,
   Button,
   IconButton,
+  Input,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -11,6 +12,7 @@ import {
   ModalHeader,
   ModalOverlay,
   useDisclosure,
+  VStack,
 } from "@chakra-ui/react";
 
 import ReactToPdf from "react-to-pdf";
@@ -20,6 +22,7 @@ import CVLayoutForPrint from "./CVStructureForPrint";
 import { printContext } from "../../App";
 import { setPrintContext } from "../../App"
 
+
 const ref = React.createRef();
 
 export default function Download() {
@@ -27,6 +30,7 @@ export default function Download() {
   const setPrint = useContext(setPrintContext);
   const handleSetPrint = () => setPrint(true);
   const handleSetPrintNo = () => setPrint(false);
+  const [filename, setFilename] = useState("")
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
@@ -63,11 +67,18 @@ export default function Download() {
           </ModalHeader>
           <ModalCloseButton />
           <ModalBody mx="auto">
+            <VStack>
+            <Input
+            value={filename}
+            placeholder="Input File Name"
+            onChange= {(e) => setFilename(e.target.value)}
+            />
             <Box className="pdf">
-              <ReactToPdf targetRef={ref} filename={`CV.pdf`}>
+              <ReactToPdf targetRef={ref} filename={filename=== ""? `CV.pdf` : `${filename}.pdf`}>
                 {({ toPdf }) => <Button onClick={toPdf}>Generate PDF</Button>}
               </ReactToPdf>
             </Box>
+            </VStack>
           </ModalBody>
           <ModalFooter />
         </ModalContent>

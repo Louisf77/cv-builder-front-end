@@ -39,7 +39,7 @@ export default function Bio({ userData }: IUserData): JSX.Element {
         {userData.bio.map((obj, index) => (
           <Box key={index}>{obj.bio}</Box>
         ))}
-        {print !== "yes" && (
+        {print !== true && (
           <IconButton
             aria-label="Add"
             onClick={onOpen}

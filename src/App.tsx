@@ -9,8 +9,8 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 export const userContext = createContext<string>("");
 export const subContext = createContext<string | undefined>("");
-export const printContext = createContext<string>("no");
-export const setPrintContext = createContext<(print: string) => void>(() => {
+export const printContext = createContext<boolean>(false);
+export const setPrintContext = createContext<(print: boolean) => void>(() => {
   console.log("");
 });
 
@@ -18,7 +18,7 @@ function App(): JSX.Element {
   const { user } = useAuth0();
   const [userID, setUserID] = useState<string>("");
   const [memTest, setMemTest] = useState<number>(0);
-  const [print, setPrint] = useState("no");
+  const [print, setPrint] = useState(false);
 
   const apiBaseURL = process.env.REACT_APP_API_BASE;
   useEffect(() => {

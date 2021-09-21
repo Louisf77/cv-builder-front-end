@@ -57,7 +57,7 @@ export default function Education({ userData }: IUserData): JSX.Element {
             <StackDivider borderColor="gray.200" />
           </Stack>
         ))}
-        {print !== "yes" && (
+        {print !== true && (
           <IconButton
             aria-label="Add"
             onClick={onOpen}

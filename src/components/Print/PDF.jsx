@@ -18,15 +18,15 @@ import { BiShareAlt } from "react-icons/bi";
 
 import CVLayoutForPrint from "./CVStructureForPrint";
 import { printContext } from "../../App";
-import { setPrintContext } from "../../App";
+import { setPrintContext } from "../../App"
 
 const ref = React.createRef();
 
 export default function Download() {
   const print = useContext(printContext);
   const setPrint = useContext(setPrintContext);
-  const handleSetPrint = () => setPrint("yes");
-  const handleSetPrintNo = () => setPrint("no");
+  const handleSetPrint = () => setPrint(true);
+  const handleSetPrintNo = () => setPrint(false);
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
@@ -39,7 +39,7 @@ export default function Download() {
         aria-label="share"
         icon={<BiShareAlt />}
       />
-      {print === "yes" && (
+      {print === true && (
         <Box
           ref={ref}
           className="pdf container"

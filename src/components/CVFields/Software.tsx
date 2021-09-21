@@ -42,7 +42,7 @@ export default function Software({ userData }: IUserData): JSX.Element {
             <StackItem>{obj.software}</StackItem>
           </Stack>
         ))}
-        {print !== "yes" && (
+        {print !== true && (
           <IconButton
             aria-label="Add"
             onClick={onOpen}

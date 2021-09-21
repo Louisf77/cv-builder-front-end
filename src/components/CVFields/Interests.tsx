@@ -42,7 +42,7 @@ export default function Interests({ userData }: IUserData): JSX.Element {
             <StackItem>{obj.interest}</StackItem>
           </Stack>
         ))}
-        {print !== "yes" && (
+        {print !== true && (
           <IconButton
             aria-label="Add"
             onClick={onOpen}

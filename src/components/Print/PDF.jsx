@@ -20,8 +20,7 @@ import { BiShareAlt } from "react-icons/bi";
 
 import CVLayoutForPrint from "./CVStructureForPrint";
 import { printContext } from "../../App";
-import { setPrintContext } from "../../App"
-
+import { setPrintContext } from "../../App";
 
 const ref = React.createRef();
 
@@ -30,7 +29,7 @@ export default function Download() {
   const setPrint = useContext(setPrintContext);
   const handleSetPrint = () => setPrint(true);
   const handleSetPrintNo = () => setPrint(false);
-  const [filename, setFilename] = useState("")
+  const [filename, setFilename] = useState("");
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
@@ -68,16 +67,19 @@ export default function Download() {
           <ModalCloseButton />
           <ModalBody mx="auto">
             <VStack>
-            <Input
-            value={filename}
-            placeholder="Input File Name"
-            onChange= {(e) => setFilename(e.target.value)}
-            />
-            <Box className="pdf">
-              <ReactToPdf targetRef={ref} filename={filename=== ""? `CV.pdf` : `${filename}.pdf`}>
-                {({ toPdf }) => <Button onClick={toPdf}>Generate PDF</Button>}
-              </ReactToPdf>
-            </Box>
+              <Input
+                value={filename}
+                placeholder="Input File Name"
+                onChange={(e) => setFilename(e.target.value)}
+              />
+              <Box className="pdf">
+                <ReactToPdf
+                  targetRef={ref}
+                  filename={filename === "" ? `CV.pdf` : `${filename}.pdf`}
+                >
+                  {({ toPdf }) => <Button onClick={toPdf}>Generate PDF</Button>}
+                </ReactToPdf>
+              </Box>
             </VStack>
           </ModalBody>
           <ModalFooter />
